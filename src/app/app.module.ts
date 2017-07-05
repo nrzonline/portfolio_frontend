@@ -4,15 +4,15 @@ import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { RestangularModule, RestangularHttp, Restangular } from 'ng2-restangular';
 
 import { routing } from './app.routing';
-// import { AppComponent } from './_app/app.component';
-import { ProjectsComponent } from './_projects/projects.component';
+import { AppComponent } from './app.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 
 export function RestangularConfigFactory(Restangular){
     Restangular.setBaseUrl('http://localhost:8000/api/');
     Restangular.setRequestSuffix('/');
     Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred){
-       var extractedData = data.result;
+       let extractedData = data.result;
        if(operation === 'getList'){
            extractedData = data;
        }
@@ -28,12 +28,11 @@ export function RestangularConfigFactory(Restangular){
        RestangularModule.forRoot(RestangularConfigFactory),
    ],
     declarations: [
-        // AppComponent,
+        AppComponent,
         ProjectsComponent
     ],
     bootstrap: [
-        // AppComponent
-        ProjectsComponent
+        AppComponent
     ],
     providers: [
         BaseRequestOptions

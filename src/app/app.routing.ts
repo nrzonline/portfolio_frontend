@@ -1,8 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
-import { ProjectsComponent } from "./_projects/projects.component";
+import { ProjectsComponent } from "./projects/projects.component";
 
 const appRoutes: Routes = [
-    // { path: '', component: ProjectsComponent },
+    { path: '', component: ProjectsComponent },
     // { path: '404', component: notFoundComponent },
     // { path: '*', redirectTo: '/404' }
 ];

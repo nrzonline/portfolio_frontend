@@ -42,6 +42,11 @@ module.exports = {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw-loader'
+      },
+      {
+        test: /\.sass$/,
+        exclude: /node_modules/,
+        loader: 'css-to-string-loader!style-loader!css-loader!sass-loader'
       }
     ]
   },

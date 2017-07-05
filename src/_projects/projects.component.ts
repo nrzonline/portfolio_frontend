@@ -4,7 +4,8 @@ import { Restangular } from "ng2-restangular";
 
 @Component({
     selector: 'portfolio',
-    templateUrl: 'projects.component.html'
+    templateUrl: 'projects.component.html',
+    styleUrls: ['./projects.sass'],
 })
 
 export class ProjectsComponent implements OnInit {

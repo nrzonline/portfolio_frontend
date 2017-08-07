@@ -6,6 +6,9 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 
+// Ngx Translate
+import '@ngx-translate/core';
+
 // RxJS
 import 'rxjs';
 

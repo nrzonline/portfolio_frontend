@@ -1,0 +1,203 @@
+@import '../../../node_modules/font-awesome/css/font-awesome.css'
+
+@import 'parameters.sass'
+
+// GENERAL ##################################################
+
+html, body
+  width: 100%
+  height: 100%
+  font-family: Verdana, Geneva, sans-serif
+  color: #3e3e3e
+  background: #16222A
+  background: -webkit-linear-gradient(to top, #3A6073, #16222A)
+  background: linear-gradient(to top, #3A6073, #16222A)
+  background-repeat: no-repeat
+  background-attachment: fixed
+
+.large-center-col
+  width: 90%
+  margin: 0 auto
+  max-width: 1050px
+  position: relative
+
+  @media screen and (min-width: $screen-small)
+    width: 94%
+    margin: 0 auto 20px auto
+    border: none
+
+.container
+  width: 100%
+  margin: 0
+  padding: 30px 50px
+  background: white
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.70)
+  h1
+    font-size: 18px
+    font-weight: bold
+
+  @media screen and (min-width: $screen-medium)
+    padding: 30px
+
+
+a,
+a:active,
+a:visited
+  color: #19272f
+  &:hover
+    color: darken(#19272f, 20)
+    text-decoration: none
+
+// BOOTSTRAP ################################################
+
+.navbar
+  width: 100%
+  height: 40px
+  margin: 0
+  border: 0
+  position: fixed
+  border-radius: 0
+  background: #20333e
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.30)
+  z-index: 3
+  .navbar-brand
+    float: none
+  .navbar-collapse
+    border: 0
+    -webkit-box-shadow: none
+    box-shadow: none
+  .navbar-header
+    height: 100%
+    .navbar-toggle
+      width: 170px
+      height: 100%
+      margin: 0 0 0 15px
+      color: white
+      font-size: 14px
+      border-radius: 0
+      float: none
+      background: #2c4350
+      border: 0
+      .button-text
+        padding-left: 17px
+      .fa
+        padding-top: 5px
+  .nav
+    margin: 0
+    li
+      width: 170px
+      color: white
+      text-align: center
+      letter-spacing: 1px
+      >a
+        color: white
+        padding: 15px
+        &:hover,
+        &:focus
+          color: white
+          background: #3a5565
+    .active
+      a,
+      a:visited,
+      a:active
+        color: white
+        background: #2c4350
+        &:hover
+          background: #334c5a
+          color: white
+
+// HEADER ###################################################
+
+.header
+  width: 100%
+  height: 220px
+  .title
+    color: #f39797
+    font-size: 100px
+    padding-top: 100px
+    text-align: center
+    letter-spacing: 6px
+
+// RESPONSIVE ################################################
+
+@media screen and (max-width: $screen-small)
+  .container
+    width: 100%
+    margin: 0
+    h1
+      text-align: center
+
+  .large-center-col
+    border: none
+
+  .navbar
+    height: 40px
+  .container-fluid
+    height: 100%
+  .navbar-header
+    float: none
+  .navbar-toggle
+    display: block
+  .navbar-collapse
+    border-color: transparent
+    box-shadow: none
+  .navbar-collapse.collapse
+    display: none !important
+  .navbar-nav
+    float: none !important
+    margin: 7.5px -15px
+  .navbar-nav>li
+    float: none
+  .navbar-nav>li>a
+    padding-top: 0
+    padding-bottom: 0
+  .navbar-text
+    float: none
+    margin: 15px 0
+  .navbar-collapse.collapse.in
+    display: block !important
+  .collapsing
+    overflow: hidden !important
+
+  .background-row
+    display: none
+
+@media screen and (min-width: $screen-small)
+  .large-center-col
+    width: 94%
+    margin: 0 auto 20px auto
+    border: none
+
+  .container
+    padding: 20px
+    h1
+      margin-top: 10px
+
+// BACKGROUND ################################################
+
+.background-row
+  position: fixed
+  top: 1100px
+  width: 4000px
+  opacity: .02
+#bg-first-row
+  height: 315px
+  transform: rotate(45deg)
+#bg-second-row
+  height: 315px
+  transform: rotate(-45deg)
+#bg-third-row,
+#bg-fifth-row
+  height: 145px
+  transform: rotate(-45deg)
+#bg-fourth-row,
+#bg-sixth-row
+  height: 145px
+  transform: rotate(45deg)
+
+// GRADIENTS #################################################
+
+.white-gradient
+  background: #FFFFFF
+  background: -webkit-linear-gradient(to left, #FFFFFF, #93baf9)
+  background: linear-gradient(to left, #FFFFFF, #93baf9)

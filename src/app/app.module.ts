@@ -1,23 +1,25 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, BaseRequestOptions } from '@angular/http';
-import { RestangularModule, RestangularHttp, Restangular } from 'ng2-restangular';
+import { Http, HttpModule, BaseRequestOptions } from '@angular/http';
+import { RestangularModule } from 'ng2-restangular';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { ProjectComponent } from './project/project.component';
 
+import { SafePipe } from '../pipes/safe.pipe';
+
+
+export function HttpLoaderFactory(http: Http){
+    return new TranslateHttpLoader(http, '/src/assets/i18n/', '.json');
+}
 
 export function RestangularConfigFactory(Restangular){
     Restangular.setBaseUrl('http://localhost:8000/api/');
     Restangular.setRequestSuffix('/');
-    Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred){
-       let extractedData = data.result;
-       if(operation === 'getList'){
-           extractedData = data;
-       }
-       return extractedData;
-    });
 }
 
 @NgModule({
@@ -26,10 +28,19 @@ export function RestangularConfigFactory(Restangular){
        routing,
        HttpModule,
        RestangularModule.forRoot(RestangularConfigFactory),
+       TranslateModule.forRoot({
+           loader: {
+               provide: TranslateLoader,
+               useFactory: HttpLoaderFactory,
+               deps: [Http]
+           }
+       })
    ],
     declarations: [
         AppComponent,
-        ProjectsComponent
+        ProjectsComponent,
+        ProjectComponent,
+        SafePipe,
     ],
     bootstrap: [
         AppComponent
@@ -40,9 +51,6 @@ export function RestangularConfigFactory(Restangular){
 })
 
 export class AppModule {
-    constructor(){}
-}
-export class RestComponent {
     constructor(){}
 }
 

@@ -1,0 +1,38 @@
+<div class="project-container">
+    <div *ngIf="project">
+        <div class="row">
+            <div class="col-xs-12 short-description">
+                <h1>{{ project.title }}</h1>
+                <p [innerHTML]="project.short_description"></p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 description">
+                <p [innerHTML]="project.full_description"></p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="image-container"
+                     [style.background-image]="'url(' + project.published_images[0].image + ')' | safe: 'style'">
+                </div>
+
+                <div class="image-bar">
+                    <ul>
+                        <li *ngFor="let image of project.published_images" >
+                            <img alt="image.title" src="{{ image.image }}" class="thumbnail" />
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="utilities">
+                   <span class="tag" *ngFor="let skill of project.skills">
+                       {{ skill.title }}
+                   </span>
+                </div>
+
+                <div *ngIf="project.url" class="to-website">
+                    <a href="{{ project.url }}" target="_blank">
+                        <span class="fa fa-external-link"></span> Visit the website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

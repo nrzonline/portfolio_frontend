@@ -1,3 +1,7 @@
+@import 'parameters.sass'
+
+// GENERAL ##################################################
+
 .project-container
   padding: 0px
 
@@ -6,6 +10,9 @@
   font-style: italic
   padding: 0 100px 25px 100px
   text-align: center
+
+  @media screen and (max-width: $screen-small)
+    padding: 0 20px 15px 20px
 
 .description
   padding-right: 20px
@@ -25,6 +32,7 @@
   background: #F7F7F7 center no-repeat
   border: 1px #E6E6E6 solid
   box-sizing: border-box
+
 .image-bar
   clear: both
   text-align: center
@@ -41,41 +49,11 @@
         border: none
         padding: 0
         margin-bottom: 0
+        border-radius: 0
 
-.quote
-  padding: 10px 25px
-  margin: 25px
-  background-color: #f5f5f5
-  font-size: 13px
-  font-style: italic
-  text-align: center
-  border-radius: 10px
-  letter-spacing: 1px
-  border-left: 4px #7392a5 solid
-  border-right: 4px #7392a5 solid
-  .quote-from
-    padding-top: 8px
-    font-size: 11px
-    color: #7d7d7d
-    display: block
-    clear: both
-    position: relative
-    &:before
-      content: "\2014"
 .utilities
   text-align: center
   clear: both
-
-.tag
-  padding: 10px
-  margin: 5px
-  font-size: 12px
-  font-weight: bold
-  color: white
-  background: #19272f
-  border: #ddd
-  border-radius: 4px
-  display: inline-block
 
 .to-website
   font-weight: bold

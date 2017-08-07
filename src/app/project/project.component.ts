@@ -11,6 +11,7 @@ import { Restangular } from 'ng2-restangular';
 
 export class ProjectComponent implements OnInit {
     public project:any;
+    public displayImage:any;
 
     public constructor(private restangular: Restangular,
                        private activatedRoute: ActivatedRoute){
@@ -27,7 +28,12 @@ export class ProjectComponent implements OnInit {
 
             project.get().subscribe(response => {
                 this.project = response;
+                this.displayImage = this.project.published_images[0].image;
             });
         });
+    }
+
+    public changeDisplayImage(image:string){
+        this.displayImage = image;
     }
 }

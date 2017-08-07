@@ -1,7 +1,5 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1><span class="fa fa-arrow-right"></span> {{ 'PROJECTS_TITLE' | translate }}</h1>
-
         <div *ngFor="let project of projects">
             <div id="project_{{ project.id }}" class="project"
                  [style.background-image]="'url(' + project.published_images[0].image + ')' | safe: 'style'"

@@ -9,13 +9,13 @@
                 <p [innerHTML]="project.full_description"></p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="image-container"
-                     [style.background-image]="'url(' + project.published_images[0].image + ')' | safe: 'style'">
+                <div id="image-container"
+                     [style.background-image]="'url(' + displayImage + ')' | safe: 'style'">
                 </div>
 
                 <div class="image-bar">
                     <ul>
-                        <li *ngFor="let image of project.published_images" >
+                        <li *ngFor="let image of project.published_images" (click)="changeDisplayImage(image.image)">
                             <img alt="image.title" src="{{ image.image }}" class="thumbnail" />
                         </li>
                     </ul>

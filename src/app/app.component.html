@@ -22,7 +22,7 @@
         </div>
 
         <div class="collapse navbar-collapse" id="top-navbar">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav nav-justified">
                 <li class="active"><a [routerLink]="['projects']">{{ 'NAV_PROJECTS' | translate }}</a></li>
                 <li><a [routerLink]="['skills']">{{ 'NAV_SKILLS' | translate }}</a></li>
                 <li><a [routerLink]="['about']">{{ 'NAV_ABOUT' | translate }}</a></li>
@@ -33,11 +33,15 @@
 </nav>
 
 <div class="header">
-    <div class="title">
-        <div class="header-line"></div>
-        Hi, my name is <span class="secondary-color">Edwin ter Horst</span><br />
-        I am a <span class="secondary-color">back-end webdeveloper</span>
-        <div class="header-line"></div>
+    <div class="header-background">
+        <div class="header-overlay">
+            <div class="title">
+                <div class="header-line"></div>
+                Hi, my name is <span class="secondary-color">Edwin ter Horst</span><br />
+                I am a <span class="secondary-color">back-end webdeveloper</span>
+                <div class="header-line header-line-white"></div>
+            </div>
+        </div>
     </div>
 </div>
 

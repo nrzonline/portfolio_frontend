@@ -7,13 +7,13 @@ import { fadeInAnimation } from '../routing-animations';
 
 @Component({
     selector: 'project',
-    templateUrl: 'project.component.html',
+    templateUrl: 'project_detail.component.html',
     styleUrls: ['../../assets/sass/project.sass'],
     animations: [fadeInAnimation],
     host: {'[@fadeInAnimation]': ''}
 })
 
-export class ProjectComponent implements OnInit {
+export class ProjectDetailComponent implements OnInit {
     public moduleIsReady:boolean = false;
     public project:any;
     public displayImage:any;

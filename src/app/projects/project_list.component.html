@@ -5,7 +5,7 @@
                  [style.background-image]="'url(' + project.published_images[0].image + ')' | safe: 'style'"
                  (mouseover)="setActiveProject(project.id)"
                  (mouseout)="resetActiveProject()"
-                 (click)="openProject(project.id)">
+                 (click)="onSelect(project.id)">
                 <div class="interface"
                      [style.display]="(activeProjectId == project.id) ? 'block' : 'none'">
                     <div class="view-icon"><span class="fa fa-search fa-3x"></span></div>

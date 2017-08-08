@@ -7,13 +7,13 @@ import { fadeInAnimation } from '../routing-animations';
 
 @Component({
     selector: 'portfolio',
-    templateUrl: 'projects.component.html',
+    templateUrl: 'project_list.component.html',
     styleUrls: ['../../assets/sass/projects.sass'],
     animations: [fadeInAnimation],
     host: {'[@fadeInAnimation]': ''}
 })
 
-export class ProjectsComponent implements OnInit {
+export class ProjectListComponent implements OnInit {
     public moduleIsReady:boolean = false;
     public projects:any = [];
     public activeProjectId:number = null;
@@ -43,7 +43,7 @@ export class ProjectsComponent implements OnInit {
         this.activeProjectId = null;
     }
 
-    public openProject(projectId){
-        this.router.navigate(['project', projectId]);
+    public onSelect(projectId){
+        this.router.navigate(['projects', projectId]);
     }
 }

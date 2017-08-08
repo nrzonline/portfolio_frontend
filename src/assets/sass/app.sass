@@ -23,7 +23,8 @@ html, body
   width: 100%
   height: 280px
   .header-background
-    width: 1045px
+    width: 100%
+    max-width: 1045px
     height: 280px
     margin: auto
     background: url('../images/edwin.jpg') center no-repeat
@@ -49,19 +50,20 @@ html, body
     padding: 10px
     text-shadow: 0 0 20px black
     .secondary-color
-      color: #ead9a3
+      color: #8bcdde
   .header-line
     width: 40px
     height: 4px
     margin: auto
-    background: #ead9a3
+    background: #8bcdde
     display: inline-block
   .header-line-white
     background: white
 
 .large-center-col
   width: 95%
-  margin: 0 auto 20px 0
+  height: calc(100% - 280px)
+  margin: 0 auto 0 0
   max-width: 1045px
 
   @media screen and (min-width: $screen-small)
@@ -71,9 +73,11 @@ html, body
 
 .container
   width: 100%
+  min-height: 100%
   padding: 20px 50px
   background: white
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.70)
+  display: inline-block
   h1
     font-size: 18px
     font-weight: bold
@@ -84,6 +88,12 @@ html, body
     padding: 10px
   @media screen and (min-width: $screen-small)
     padding: 20px
+
+footer
+  margin-top: 25px
+  .hire-me
+    padding: 40px
+    font-size: 25px
 
 a,
 a:active,
@@ -110,7 +120,7 @@ a:visited
   .quote-from
     padding-top: 8px
     font-size: 11px
-    color: #7d7d7d
+    color: #828282
     display: block
     clear: both
     position: relative

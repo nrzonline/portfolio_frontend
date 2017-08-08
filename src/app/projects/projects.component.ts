@@ -2,14 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ng2-restangular';
 import { Router } from '@angular/router';
 
+import { fadeInAnimation } from '../routing-animations';
+
 
 @Component({
     selector: 'portfolio',
     templateUrl: 'projects.component.html',
     styleUrls: ['../../assets/sass/projects.sass'],
+    animations: [fadeInAnimation],
+    host: {'[@fadeInAnimation]': ''}
 })
 
 export class ProjectsComponent implements OnInit {
+    public moduleIsReady:boolean = false;
     public projects:any = [];
     public activeProjectId:number = null;
 
@@ -26,6 +31,7 @@ export class ProjectsComponent implements OnInit {
 
         projects.getList().subscribe(response => {
             this.projects = response;
+            this.moduleIsReady = true;
         });
     }
 

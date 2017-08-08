@@ -1,4 +1,4 @@
-<div class="project-container">
+<div *ngIf="moduleIsReady" class="project-container" [@fadeInAnimation]>
     <div *ngIf="project">
         <div class="row">
             <div class="col-xs-12 short-description">

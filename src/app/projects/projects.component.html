@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="moduleIsReady" class="row" [@fadeInAnimation]>
     <div class="col-xs-12">
         <div *ngFor="let project of projects">
             <div id="project_{{ project.id }}" class="project"

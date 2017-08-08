@@ -1,22 +1,45 @@
-import { Component, AfterViewInit } from '@angular/core'
+import { Component, AfterViewInit, OnInit, OnDestroy } from '@angular/core'
 import { TranslateService } from '@ngx-translate/core';
 import { NgZone } from '@angular/core';
+import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
+import {NavigationEnd} from "@angular/router";
+import {Renderer} from "@angular/core";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['../assets/sass/app.sass']
+    styleUrls: ['../assets/sass/app.sass'],
 })
 
-export class AppComponent implements AfterViewInit {
-    constructor(private translate: TranslateService, private ngZone: NgZone){
+export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
+    private routerSubscription:Subscription;
+
+    constructor(
+            private translate: TranslateService,
+            private ngZone: NgZone,
+            private router: Router,
+            private renderer: Renderer){
         this.translate.setDefaultLang('en');
         this.translate.use('en');
+    }
+
+    public ngOnInit() {
+        console.log(this.router.url);
+        this.routerSubscription = this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .subscribe(event => {
+                this.renderer.setElementProperty(document.body, "scrollTop", 0);
+            });
     }
 
     public ngAfterViewInit(){
         this.adjustBackgroundPosition();
         this.adjustBackgroundPositionOnWindowResize();
+    }
+
+    public ngOnDestroy() {
+        this.routerSubscription.unsubscribe();
     }
 
     private adjustBackgroundPositionOnWindowResize(){

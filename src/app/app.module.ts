@@ -5,12 +5,12 @@ import { RestangularModule } from 'ng2-restangular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { routing } from './app.routing';
+import { routing } from './routing';
+import { SafePipe } from '../pipes/safe.pipe';
+
 import { AppComponent } from './app.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './project/project.component';
-
-import { SafePipe } from '../pipes/safe.pipe';
 
 
 export function HttpLoaderFactory(http: Http){

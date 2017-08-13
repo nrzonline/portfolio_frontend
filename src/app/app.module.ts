@@ -10,9 +10,10 @@ import { routing } from './routing';
 import { SafePipe } from '../pipes/safe.pipe';
 import { DataService } from './_services/data_service';
 
-import { AboutComponent } from './about/index';
 import { ProjectListComponent, ProjectDetailComponent } from './projects/index';
 import { SkillListComponent, SkillDetailComponent } from './skills/index';
+import { AboutComponent } from './about/index';
+import { ContactComponent } from './contact/index';
 
 
 export function HttpLoaderFactory(http: Http){
@@ -46,6 +47,7 @@ export function RestangularConfigFactory(Restangular){
         SkillListComponent,
         SkillDetailComponent,
         AboutComponent,
+        ContactComponent,
     ],
     bootstrap: [
         AppComponent,

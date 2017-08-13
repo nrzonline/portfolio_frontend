@@ -10,6 +10,7 @@ import { routing } from './routing';
 import { SafePipe } from '../pipes/safe.pipe';
 import { DataService } from './_services/data_service';
 
+import { AboutComponent } from './about/index';
 import { ProjectListComponent, ProjectDetailComponent } from './projects/index';
 import { SkillListComponent, SkillDetailComponent } from './skills/index';
 
@@ -44,6 +45,7 @@ export function RestangularConfigFactory(Restangular){
         ProjectDetailComponent,
         SkillListComponent,
         SkillDetailComponent,
+        AboutComponent,
     ],
     bootstrap: [
         AppComponent,

@@ -1,4 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
+
+import { AboutComponent } from './about/index';
 import { ProjectListComponent, ProjectDetailComponent } from './projects/index';
 import { SkillListComponent, SkillDetailComponent } from './skills/index';
 
@@ -12,6 +14,8 @@ const appRoutes: Routes = [
     { path: 'skills', component: SkillListComponent },
     { path: 'skills/:id', component: SkillDetailComponent },
     { path: 'skills/:id/:slug', component: SkillDetailComponent },
+
+    { path: 'about', component: AboutComponent },
 
     // { path: '404', component: notFoundComponent },
     // { path: '*', redirectTo: '/404' }

@@ -8,8 +8,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { routing } from './routing';
 import { SafePipe } from '../pipes/safe.pipe';
+import { DataService } from './_services/data_service';
 
 import { ProjectListComponent, ProjectDetailComponent } from './projects/index';
+import { SkillListComponent, SkillDetailComponent } from './skills/index';
 
 
 export function HttpLoaderFactory(http: Http){
@@ -31,21 +33,24 @@ export function RestangularConfigFactory(Restangular){
            loader: {
                provide: TranslateLoader,
                useFactory: HttpLoaderFactory,
-               deps: [Http]
+               deps: [Http],
            }
-       })
+       }),
    ],
     declarations: [
         AppComponent,
+        SafePipe,
         ProjectListComponent,
         ProjectDetailComponent,
-        SafePipe,
+        SkillListComponent,
+        SkillDetailComponent,
     ],
     bootstrap: [
-        AppComponent
+        AppComponent,
     ],
     providers: [
-        BaseRequestOptions
+        BaseRequestOptions,
+        DataService,
     ]
 })
 

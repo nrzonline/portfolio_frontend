@@ -26,7 +26,7 @@ export class ProjectListComponent implements OnInit {
         this.getProjects();
     }
 
-    public getProjects(){
+    private getProjects(){
         let projects = this.restangular.all('projects');
 
         projects.getList().subscribe(response => {
@@ -35,15 +35,15 @@ export class ProjectListComponent implements OnInit {
         });
     }
 
-    public setActiveProject(projectId){
-        this.activeProjectId = projectId;
+    public setActiveProject(id:number){
+        this.activeProjectId = id;
     }
 
     public resetActiveProject(){
         this.activeProjectId = null;
     }
 
-    public onSelect(projectId){
-        this.router.navigate(['projects', projectId]);
+    public changeRoute(route: string, id:number, slug:string){
+        this.router.navigate([route, id, slug]);
     }
 }

@@ -1,10 +1,8 @@
-import { Component, AfterViewInit, OnInit, OnDestroy } from '@angular/core'
+import { Component, AfterViewInit, OnInit, OnDestroy, NgZone, Renderer } from '@angular/core'
 import { TranslateService } from '@ngx-translate/core';
-import { NgZone } from '@angular/core';
-import {Subscription} from "rxjs";
-import {Router} from "@angular/router";
-import {NavigationEnd} from "@angular/router";
-import {Renderer} from "@angular/core";
+import { Subscription } from 'rxjs';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+
 
 @Component({
     selector: 'app-root',
@@ -15,31 +13,44 @@ import {Renderer} from "@angular/core";
 export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     private routerSubscription:Subscription;
 
-    constructor(
-            private translate: TranslateService,
-            private ngZone: NgZone,
-            private router: Router,
-            private renderer: Renderer){
+    private _routeScrollPositions: {[url: string] : number}[] = [];
+    private _subscriptions: Subscription[] = [];
+
+    constructor(private translate: TranslateService,
+                private ngZone: NgZone,
+                private router: Router){
         this.translate.setDefaultLang('en');
         this.translate.use('en');
     }
 
     public ngOnInit() {
-        console.log(this.router.url);
-        this.routerSubscription = this.router.events
-            .filter(event => event instanceof NavigationEnd)
-            .subscribe(event => {
-                this.renderer.setElementProperty(document.body, "scrollTop", 0);
-            });
     }
 
     public ngAfterViewInit(){
+        this.rememberScrollPositionOnRouteChange();
         this.adjustBackgroundPosition();
         this.adjustBackgroundPositionOnWindowResize();
     }
 
     public ngOnDestroy() {
         this.routerSubscription.unsubscribe();
+        this._subscriptions.forEach(subscription => subscription.unsubscribe());
+    }
+
+    private rememberScrollPositionOnRouteChange(){
+        this._subscriptions.push(
+            this.router.events.pairwise().subscribe(([prevRouteEvent, currRouteEvent]) => {
+                if(prevRouteEvent instanceof NavigationEnd && currRouteEvent instanceof NavigationStart){
+                    this._routeScrollPositions[
+                        prevRouteEvent.urlAfterRedirects || prevRouteEvent.url] = window.pageYOffset;
+                }
+                if(currRouteEvent instanceof NavigationEnd){
+                    window.scrollTo(
+                        0, this._routeScrollPositions[currRouteEvent.urlAfterRedirects || currRouteEvent.url || 0]
+                    );
+                }
+            })
+        );
     }
 
     private adjustBackgroundPositionOnWindowResize(){

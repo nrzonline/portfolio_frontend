@@ -5,10 +5,10 @@
                 <h1>{{ project.title }}</h1>
                 <p [innerHTML]="project.short_description"></p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 description">
+            <div class="col-xs-12 col-sm-7 description">
                 <p [innerHTML]="project.full_description"></p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="col-xs-12 col-sm-5">
                 <div id="image-container"
                      [style.background-image]="'url(' + displayImage + ')' | safe: 'style'">
                 </div>
@@ -22,9 +22,10 @@
                 </div>
 
                 <div class="utilities">
-                   <span class="tag" *ngFor="let skill of project.skills">
+                   <a class="tag" *ngFor="let skill of project.skills"
+                         (click)="changeRoute('skills', skill.id, skill.slug)">
                        {{ skill.title }}
-                   </span>
+                   </a>
                 </div>
 
                 <div *ngIf="project.url" class="to-website">

@@ -13,6 +13,7 @@ import { fadeInAnimation } from '../routing-animations';
 
 export class SkillListComponent implements OnInit {
     public moduleIsReady:boolean = false;
+    public categories:any;
     public skills:any;
     public activeSkillId:number = null;
 
@@ -21,18 +22,22 @@ export class SkillListComponent implements OnInit {
     }
 
     public ngOnInit(){
+        this.getCategories();
         this.getSkills();
     }
 
-    private getSkills(){
-        let skills = this.restangular.all('skills');
+    private getCategories(){
+        this.restangular.all('skill-categories').getList().subscribe(response => {
+            this.categories = response.plain();
+        });
+    }
 
-        skills.getList().subscribe(response => {
-            this.skills = response;
-            this.addSkillLevelPercentageToSkills();
+    private getSkills(){
+        this.restangular.all('skills').getList().subscribe(response => {
+            this.skills = response.plain();
             this.moduleIsReady = true;
-            console.log(this.skills.plain());
-        })
+            this.addSkillLevelPercentageToSkills();
+        });
     }
 
     private addSkillLevelPercentageToSkills(){

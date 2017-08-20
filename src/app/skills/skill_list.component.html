@@ -1,21 +1,29 @@
-<div *ngIf="moduleIsReady" class="row" [@fadeInAnimation]>
+<div *ngIf="moduleIsReady" [@fadeInAnimation]>
     <div class="col-xs-12">
-        <div *ngFor="let skill of skills">
-            <div class="wrapper">
-                <div id="skill_{{ skill.id }}" class="skill"
-                     [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
-                     (mouseover)="setActiveSkill(skill.id)"
-                     (mouseout)="resetActiveSkill()"
-                     (click)="changeRoute('skills', skill.id, skill.slug)">
-                    <div class="interface"
-                         [style.display]="(activeSkillId == skill.id) ? 'block' : 'none'">
-                        <div class="title">{{ skill.title }}</div>
-                    </div>
-                </div>
-                <div class="level-wrapper">
-                    <div class="level-indicator"></div>
-                    <div class="level-progress-mask"
-                         [style.width]="100-skill.level_percentage + '%'">
+        <div *ngFor="let category of categories">
+            <div class="category row">
+                <h1>{{ category.title }}</h1>
+
+                <div *ngFor="let skill of skills">
+                    <div *ngIf="category.id == skill.category.id ">
+                        <div class="wrapper">
+                            <div id="skill_{{ skill.id }}" class="skill"
+                                 [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
+                                 (mouseover)="setActiveSkill(skill.id)"
+                                 (mouseout)="resetActiveSkill()"
+                                 (click)="changeRoute('skills', skill.id, skill.slug)">
+                                <div class="interface"
+                                     [style.display]="(activeSkillId == skill.id) ? 'block' : 'none'">
+                                    <div class="title">{{ skill.title }}</div>
+                                </div>
+                            </div>
+                            <div class="level-wrapper">
+                                <div class="level-indicator"></div>
+                                <div class="level-progress-mask"
+                                     [style.width]="100-skill.level_percentage + '%'">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

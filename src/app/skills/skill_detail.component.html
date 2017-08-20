@@ -1,17 +1,19 @@
 <div *ngIf="moduleIsReady" class="project-container" [@fadeInAnimation]>
     <div *ngIf="skill">
         <div class="row">
-            <div class="col-xs-12 short-description">
-                <h1>{{ skill.title }}, <small>{{ skill.category.title }}</small></h1>
-                <div class="quote">
-                    <p [innerHTML]="skill.short_description"></p>
+            <div class="col-xs-9">
+                <div class="short-description">
+                    <h1>{{ skill.title }}, <small>{{ skill.category.title }}</small></h1>
+                    <div class="quote">
+                        <p [innerHTML]="skill.short_description"></p>
+                    </div>
+                </div>
+                <div class="full-description">
+                    <p [innerHTML]="skill.full_description"></p>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-8 description">
-                <p [innerHTML]="skill.full_description"></p>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <div id="image-container"
+            <div class="col-xs-3">
+                <div class="skill-image-container"
                      [style.background-image]="'url(' + skill.image + ')' | safe: 'style'">
                 </div>
             </div>

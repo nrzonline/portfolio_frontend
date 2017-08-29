@@ -19,6 +19,14 @@ html, body
   background-attachment: fixed
   -webkit-backface-visibility: hidden
 
+a,
+a:active,
+a:visited
+  color: #19272f
+  &:hover
+    color: darken(#19272f, 20)
+    text-decoration: none
+
 .header
   width: 100%
   height: 280px
@@ -64,6 +72,7 @@ html, body
   height: calc(100% - 280px)
   margin: 0 auto 0 0
   max-width: 1045px
+  z-index: 1
 
   @media screen and (min-width: $screen-small)
     width: 94%
@@ -77,6 +86,7 @@ html, body
   background: white
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.70)
   display: inline-block
+  z-index: 2
   h1
     font-size: 18px
     font-weight: bold
@@ -88,57 +98,42 @@ html, body
   @media screen and (min-width: $screen-small)
     padding: 20px
 
+.content-container
+  width: 100%
+  padding: 0
+
 footer
   margin-top: 25px
   .hire-me
     padding: 40px
     font-size: 25px
 
-a,
-a:active,
-a:visited
-  color: #19272f
-  &:hover
-    color: darken(#19272f, 20)
-    text-decoration: none
-
 // COMPONENTS ##################################################
 
-.quote
-  padding: 10px 25px
-  margin: 25px
-  background-color: #f5f5f5
-  font-size: 13px
-  font-style: italic
-  text-align: center
-  border-radius: 10px
-  letter-spacing: 1px
-  border-left: 4px #7392a5 solid
-  border-right: 4px #7392a5 solid
-  animation: pop-in .3s ease-out forwards
-  .quote-from
-    padding-top: 8px
-    font-size: 11px
-    color: #828282
-    display: block
-    clear: both
-    position: relative
-    &:before
-      content: "\2014"
+.image-container
+  background: #F7F7F7 center no-repeat
+  border: 1px #E6E6E6 solid
+  box-sizing: border-box
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
 
-  @media screen and (max-width: $screen-small)
-    margin: 10px
+.box
+  background: #F7F7F7 center no-repeat
+  border: 1px #E6E6E6 solid
+  box-sizing: border-box
+  position: relative
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
 
 .tag
-  padding: 10px
-  margin: 0 5px 5px 5px
-  font-size: 12px
-  font-weight: bold
-  color: white
-  background: #19272f
-  border: #ddd
   display: inline-block
+  padding: 5px 15px
+  margin: 0 5px 5px 5px
+  color: #283b46
+  font-size: 12px
+  border: 1px gainsboro solid
+  border-left: #283b46 2px solid
+  background: white
   cursor: pointer
+  transition: .1s all
   &:hover,
   &:active,
   &:visited,
@@ -146,7 +141,21 @@ a:visited
     color: white!important
     text-decoration: none
     background: lighten(#19272f, 15)
+    border-color: #283b46
 
+.side-bar
+  float: right
+  width: 220px
+  padding: 25px 10px
+  margin: 0 0 10px 20px
+  box-shadow: 0 0 3px #d2d2d2
+  background: #f7f7f7
+  img
+    width: 180px
+    margin: 10px
+
+.content
+  text-align: justify
 
 // BOOTSTRAP ################################################
 
@@ -248,10 +257,12 @@ a:visited
 // BACKGROUND ################################################
 
 .background-row
+  display: none
   position: fixed
   top: 1100px
   width: 4000px
   opacity: .02
+  z-index: 0
 
   @media screen and (max-width: $screen-small)
     display: none

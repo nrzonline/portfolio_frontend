@@ -30,7 +30,7 @@ export class ProjectDetailComponent implements OnInit {
     private getProject(){
         this.route.params.subscribe((params: Params) => {
             let projectId = params['id'];
-            let project = this.restangular.one('projects', projectId);
+            let project = this.restangular.one('project', projectId);
 
             project.get().subscribe(response => {
                 this.project = response;

@@ -26,7 +26,7 @@ export class SkillDetailComponent implements OnInit {
     private getSkill(){
         this.route.params.subscribe((params: Params) => {
             let skillId = params['id'];
-            let project = this.restangular.one('skills', skillId);
+            let project = this.restangular.one('skill', skillId);
 
             project.get().subscribe(response => {
                 this.skill = response;

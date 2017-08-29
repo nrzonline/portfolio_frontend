@@ -27,7 +27,7 @@ export class ProjectListComponent implements OnInit {
     }
 
     private getProjects(){
-        let projects = this.restangular.all('projects');
+        let projects = this.restangular.all('project');
 
         projects.getList().subscribe(response => {
             this.projects = response;

@@ -27,13 +27,13 @@ export class SkillListComponent implements OnInit {
     }
 
     private getCategories(){
-        this.restangular.all('skill-categories').getList().subscribe(response => {
+        this.restangular.all('skill-category').getList().subscribe(response => {
             this.categories = response.plain();
         });
     }
 
     private getSkills(){
-        this.restangular.all('skills').getList().subscribe(response => {
+        this.restangular.all('skill').getList().subscribe(response => {
             this.skills = response.plain();
             this.moduleIsReady = true;
             this.addSkillLevelPercentageToSkills();

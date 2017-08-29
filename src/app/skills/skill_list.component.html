@@ -1,5 +1,14 @@
 <div *ngIf="moduleIsReady" [@fadeInAnimation]>
     <div class="col-xs-12">
+        <!--
+        <div class="filters">
+            <a href="#" class="btn filter-button">All</a>
+            <a href="#" class="btn filter-button">Back-end</a>
+            <a href="#" class="btn filter-button">Front-end</a>
+            <a href="#" class="btn filter-button">Tools</a>
+        </div>
+        -->
+
         <div *ngFor="let category of categories">
             <div class="category row">
                 <h1>{{ category.title }}</h1>

@@ -17,18 +17,22 @@ export class ProjectDetailComponent implements OnInit {
     public moduleIsReady:boolean = false;
     public project:any;
     public displayImage:any;
+    public uniqueReadCount:number;
+    public votes:any;
 
     public constructor(private restangular: Restangular,
                        private router: Router,
-                       private route: ActivatedRoute){
+                       private activatedRoute: ActivatedRoute){
     }
 
     public ngOnInit(){
         this.getProject();
+        this.getUniqueRequestCount();
+        this.getVotes();
     }
 
     private getProject(){
-        this.route.params.subscribe((params: Params) => {
+        this.activatedRoute.params.subscribe((params: Params) => {
             let projectId = params['id'];
             let project = this.restangular.one('project', projectId);
 
@@ -36,6 +40,31 @@ export class ProjectDetailComponent implements OnInit {
                 this.project = response;
                 this.displayImage = this.project.published_images[0].image;
                 this.moduleIsReady = true;
+            });
+        });
+    }
+    
+    private getUniqueRequestCount(){
+        this.activatedRoute.params.subscribe((params: Params) => {
+            let module = 'project';
+            let id = params['id'];
+            let path = `/${module}/${id}/`;
+            
+            this.restangular.one('').customGET('request-count/' + path + '/unique/').subscribe(response => {
+                this.uniqueReadCount = response.plain().count;
+            });
+        });
+    }
+    
+    private getVotes(){
+        this.activatedRoute.params.subscribe((params: Params) => {
+            let model = 'project';
+            let id = params['id'];
+            let url = `vote/${model}/${id}/`;
+        
+            this.restangular.one('').customGET(url).subscribe(response => {
+                this.votes = response.plain();
+                console.log(this.votes);
             });
         });
     }

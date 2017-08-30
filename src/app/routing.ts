@@ -8,9 +8,9 @@ import { ContactComponent } from './contact/index';
 
 const appRoutes: Routes = [
     { path: '', component: ProjectListComponent },
-    { path: 'projects', component: ProjectListComponent },
-    { path: 'projects/:id', component: ProjectDetailComponent },
-    { path: 'projects/:id/:slug', component: ProjectDetailComponent },
+    { path: 'project', component: ProjectListComponent },
+    { path: 'project/:id', component: ProjectDetailComponent },
+    { path: 'project/:id/:slug', component: ProjectDetailComponent },
 
     { path: 'skills', component: SkillListComponent },
     { path: 'skills/:id', component: SkillDetailComponent },

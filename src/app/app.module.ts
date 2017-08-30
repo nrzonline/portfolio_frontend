@@ -5,15 +5,15 @@ import { RestangularModule } from 'ng2-restangular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { AppComponent } from './app.component';
 import { routing } from './routing';
-import { SafePipe } from '../pipes/safe.pipe';
-import { DataService } from './_services/data_service';
+import { AppComponent } from './app.component';
 
 import { ProjectListComponent, ProjectDetailComponent } from './projects/index';
 import { SkillListComponent, SkillDetailComponent } from './skills/index';
 import { AboutComponent } from './about/index';
 import { ContactComponent } from './contact/index';
+
+import { SafePipe } from '../pipes/safe.pipe';
 
 
 export function HttpLoaderFactory(http: Http){
@@ -54,7 +54,6 @@ export function RestangularConfigFactory(Restangular){
     ],
     providers: [
         BaseRequestOptions,
-        DataService,
     ]
 })
 

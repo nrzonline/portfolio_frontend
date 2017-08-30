@@ -36,9 +36,12 @@
                 </div>
             </div>
 
-            <div class="modified" *ngIf="project.datetime_modified">
+            <div class="article-data">
                 <div>Published on {{ project.datetime_added | date:'longDate' }}</div>
-                <div>Last update on {{ project.datetime_modified | date:'longDate' }}</div>
+                <div *ngIf="project.datetime_modified">
+                    Last update on {{ project.datetime_modified | date:'longDate' }}
+                </div>
+                <div>Article is read by {{ uniqueReadCount }} visitors</div>
             </div>
         </div>
 
@@ -48,47 +51,8 @@
             <div class="date-separator">
                 <div class="date">{{ project.datetime_added | date:'longDate' }}</div>
             </div>
-
             <div class="short-description" [innerHTML]="project.short_description"></div>
-
             <div class="full-description" [innerHTML]="project.full_description"></div>
-                <!--
-                <h2>The previous state of the module</h2>
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                <div class="quote">
-                    Having a good and reliable system for managing the absences, saved me a lot of time!
-                </div>
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-
-                <h2>The previous state of the module</h2>
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                alskdjflaskjdfaskldfj laskjdf kasdfj laskdj flkasjd fklajsdl fljkasldk fjaskldjj flaskdfj lkasdj flaskdj fsa fkjasdl fjlaksdjf klasdfj jf
-                -->
         </div>
     </div>
 </div>

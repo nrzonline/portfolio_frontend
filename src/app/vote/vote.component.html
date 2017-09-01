@@ -1,20 +1,27 @@
-<div class="social">
+<div class="social" *ngIf="_model">
     <div class="voting">
-        <div class="vote-option vote-cast">
+        <div (click)="castVote(2);" class="vote-option" [ngClass]="{'vote-cast': votes.client_vote == 2}">
             <span class="vote-icon fa fa-heart fa-2x"></span>
-            <div class="vote-count">5</div>
+            <div class="vote-count">{{ votes.love }}</div>
         </div>
-        <div class="vote-option">
-            <span class="vote-icon fa fa-birthday-cake fa-2x"></span>
-            <div class="vote-count">5</div>
-        </div>
-        <div class="vote-option">
+
+        <div (click)="castVote(1)" class="vote-option" [ngClass]="{'vote-cast': votes.client_vote == 1}">
             <span class="vote-icon fa fa-thumbs-up fa-2x"></span>
-            <div class="vote-count">5</div>
+            <div class="vote-count">{{ votes.thumbs_up }}</div>
         </div>
-        <div class="vote-option">
+
+        <div (click)="castVote(0)" class="vote-option" [ngClass]="{'vote-cast': votes.client_vote == 0}">
             <span class="vote-icon fa fa-thumbs-down fa-2x"></span>
-            <div class="vote-count">5</div>
+            <div class="vote-count">{{ votes.thumbs_down }}</div>
+        </div>
+
+        <div class="vote-message">
+            <div *ngIf="voteMessage['success']" class="vote-success" [@fadeInAnimation] [@fadeOutAnimation]>
+                {{ voteMessage['success'] | translate}}
+            </div>
+            <div *ngIf="voteMessage['error']" class="vote-error" [@fadeInAnimation] [@fadeOutAnimation]>
+                {{ voteMessage['error'] | translate}}
+            </div>
         </div>
     </div>
 </div>

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver,
+         ViewContainerRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
 import { fadeInAnimation } from '../routing-animations';
+import { VoteComponent } from '../vote/vote.component';
 
 
 @Component({
@@ -14,23 +16,27 @@ import { fadeInAnimation } from '../routing-animations';
 })
 
 export class ProjectDetailComponent implements OnInit {
-    public moduleIsReady:boolean = false;
     public project:any;
+    
+    public moduleIsReady:boolean = false;
     public displayImage:any;
     public uniqueReadCount:number;
     public votes:any;
+    public voteComponentRef:any;
 
     public constructor(private restangular: Restangular,
                        private router: Router,
-                       private activatedRoute: ActivatedRoute){
+                       private activatedRoute: ActivatedRoute,
+                       private componentFactoryResolver: ComponentFactoryResolver,
+                       private viewContainerRef: ViewContainerRef){
     }
-
+    
     public ngOnInit(){
         this.getProject();
         this.getUniqueRequestCount();
-        this.getVotes();
+        this.factoryVoteComponent();
     }
-
+    
     private getProject(){
         this.activatedRoute.params.subscribe((params: Params) => {
             let projectId = params['id'];
@@ -46,9 +52,8 @@ export class ProjectDetailComponent implements OnInit {
     
     private getUniqueRequestCount(){
         this.activatedRoute.params.subscribe((params: Params) => {
-            let module = 'project';
-            let id = params['id'];
-            let path = `/${module}/${id}/`;
+            let projectId = params['id'];
+            let path = '/project/' + projectId + '/';
             
             this.restangular.one('').customGET('request-count/' + path + '/unique/').subscribe(response => {
                 this.uniqueReadCount = response.plain().count;
@@ -56,16 +61,12 @@ export class ProjectDetailComponent implements OnInit {
         });
     }
     
-    private getVotes(){
+    @ViewChild('voteComponentContainer', {read: ViewContainerRef}) target: ViewContainerRef;
+    private factoryVoteComponent(){
         this.activatedRoute.params.subscribe((params: Params) => {
-            let model = 'project';
-            let id = params['id'];
-            let url = `vote/${model}/${id}/`;
-        
-            this.restangular.one('').customGET(url).subscribe(response => {
-                this.votes = response.plain();
-                console.log(this.votes);
-            });
+            let voteComponentFactory = this.componentFactoryResolver.resolveComponentFactory(VoteComponent);
+            this.voteComponentRef = this.viewContainerRef.createComponent(voteComponentFactory);
+            this.voteComponentRef.changeDetectorRef.detectChanges();
         });
     }
 

@@ -5,5 +5,8 @@
   "NAV_ABOUT": "About me",
   "NAV_CONTACT": "Contact",
 
-  "PROJECTS_TITLE": "Projects"
+  "PROJECTS_TITLE": "Projects",
+
+  "VOTE_ALREADY_CAST_BY_CLIENT": "You already voted",
+  "VOTE_CAST": "Vote cast, thank you"
 }

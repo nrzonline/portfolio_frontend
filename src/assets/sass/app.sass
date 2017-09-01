@@ -143,6 +143,43 @@ footer
     background: lighten(#19272f, 15)
     border-color: #283b46
 
+.voting
+  margin-top: 30px
+  color: #3a5565
+  left: 50%
+  .vote-option
+    display: inline-block
+    border: 1px #e5e7e8 solid
+    padding: 5px
+    margin: 0 1px
+    background: white
+    cursor: pointer
+  .vote-count
+    background: #3a5565
+    color: white
+    font-size: 11px
+  .vote-message
+    position: absolute
+    width: 200px
+    text-align: center
+    font-size: 11px
+    padding: 3px
+    .vote-error
+      position: relative
+      color: #a92a2a
+    .vote-success
+      position: relative
+      color: #3a751c
+.vote-cast
+  .vote-icon
+    color: #e22828
+  .vote-count
+    background: #e22828
+    color: white
+.vote-option:hover
+  .vote-icon
+    transform: scale(.85)
+
 .side-bar
   float: right
   width: 220px
@@ -222,7 +259,6 @@ footer
 
 .is-active
   background-color: #3a5565
-
 
 @media screen and (max-width: $screen-small)
   .navbar

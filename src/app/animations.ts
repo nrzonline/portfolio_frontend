@@ -13,3 +13,14 @@ export const fadeInAnimation =
         ]),
    ]);
 
+export const fadeOutAnimation =
+    trigger('fadeOutAnimation', [
+        transition(':leave', [
+            style({
+                opacity: 1
+            }),
+            animate('.3s', style({
+                opacity: 0
+            }))
+        ]),
+    ]);

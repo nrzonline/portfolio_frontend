@@ -12,6 +12,7 @@ import { ProjectListComponent, ProjectDetailComponent } from './projects/index';
 import { SkillListComponent, SkillDetailComponent } from './skills/index';
 import { AboutComponent } from './about/index';
 import { ContactComponent } from './contact/index';
+import { VoteComponent } from './vote/index';
 
 import { SafePipe } from '../pipes/safe.pipe';
 
@@ -21,7 +22,7 @@ export function HttpLoaderFactory(http: Http){
 }
 
 export function RestangularConfigFactory(Restangular){
-    Restangular.setBaseUrl('http://localhost:8000/api/');
+    Restangular.setBaseUrl('http://localhost:9000/api/');
     Restangular.setRequestSuffix('/');
 }
 
@@ -38,7 +39,7 @@ export function RestangularConfigFactory(Restangular){
                deps: [Http],
            }
        }),
-   ],
+    ],
     declarations: [
         AppComponent,
         SafePipe,
@@ -48,9 +49,13 @@ export function RestangularConfigFactory(Restangular){
         SkillDetailComponent,
         AboutComponent,
         ContactComponent,
+        VoteComponent,
     ],
     bootstrap: [
         AppComponent,
+    ],
+    entryComponents: [
+        VoteComponent,
     ],
     providers: [
         BaseRequestOptions,

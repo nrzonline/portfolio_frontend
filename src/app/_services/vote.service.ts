@@ -8,6 +8,6 @@ export class VoteService {
     }
     
     public get_votes(model:string, pk:number){
-        
+         
     }
 }

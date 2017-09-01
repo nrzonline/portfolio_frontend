@@ -13,6 +13,18 @@ export const fadeInAnimation =
         ]),
    ]);
 
+export const fastFadeInAnimation =
+    trigger('fastFadeInAnimation', [
+        transition(':enter', [
+            style({
+                opacity: 0
+            }),
+            animate('.15s', style({
+                opacity: 1
+            }))
+        ]),
+    ]);
+
 export const fadeOutAnimation =
     trigger('fadeOutAnimation', [
         transition(':leave', [

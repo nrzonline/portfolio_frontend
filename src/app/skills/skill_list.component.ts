@@ -2,47 +2,41 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
-import { fadeInAnimation } from '../routing-animations';
+import { fadeInAnimation, fastFadeInAnimation } from '../animations';
 
 @Component({
     templateUrl: 'skill_list.component.html',
     styleUrls: ['../../assets/sass/skills.sass'],
-    animations: [fadeInAnimation],
-    host: {'[@fadeInAnimation]': ''}
+    animations: [fadeInAnimation, fastFadeInAnimation],
+    host: {'[@fadeInAnimation]': '', '[@fastFadeInAnimation]': ''}
 })
 
 export class SkillListComponent implements OnInit {
     public moduleIsReady:boolean = false;
-    public categories:any;
-    public skills:any;
     public activeSkillId:number = null;
+    public categorizedSkills:any;
 
     public constructor(private restangular: Restangular,
                        private router: Router){
     }
 
     public ngOnInit(){
-        this.getCategories();
-        this.getSkills();
+        this.getCategorizedSkills();
     }
 
-    private getCategories(){
+    private getCategorizedSkills(){
         this.restangular.all('skill-category').getList().subscribe(response => {
-            this.categories = response.plain();
-        });
-    }
-
-    private getSkills(){
-        this.restangular.all('skill').getList().subscribe(response => {
-            this.skills = response.plain();
+            this.categorizedSkills = response.plain();
+            this.addSkillLevelPercentageToCategorizedSkills();
             this.moduleIsReady = true;
-            this.addSkillLevelPercentageToSkills();
         });
     }
 
-    private addSkillLevelPercentageToSkills(){
-        for(let skill of this.skills){
-           skill.level_percentage = skill.level/skill.level_max*100;
+    private addSkillLevelPercentageToCategorizedSkills(){
+        for(let category of this.categorizedSkills) {
+            for(let skill of category.skills) {
+                skill.level_percentage = skill.level / skill.level_max * 100;
+            }
         }
     }
 

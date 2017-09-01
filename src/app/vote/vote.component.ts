@@ -1,7 +1,7 @@
 import { Input, Component, AfterViewInit } from '@angular/core';
 import { Restangular } from 'ng2-restangular';
 
-import { fadeInAnimation, fadeOutAnimation } from '../routing-animations';
+import { fadeInAnimation, fadeOutAnimation } from '../animations';
 
 
 @Component({

@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ng2-restangular';
 import { Router } from '@angular/router';
 
-import { fadeInAnimation } from '../routing-animations';
+import { fadeInAnimation, fastFadeInAnimation } from '../animations';
 
 
 @Component({
     selector: 'portfolio',
     templateUrl: 'project_list.component.html',
     styleUrls: ['../../assets/sass/projects.sass'],
-    animations: [fadeInAnimation],
-    host: {'[@fadeInAnimation]': ''}
+    animations: [fadeInAnimation, fastFadeInAnimation,],
+    host: {'[@fadeInAnimation]': '', '[@fastFadeInAnimation]': '',}
 })
 
 export class ProjectListComponent implements OnInit {
     public moduleIsReady:boolean = false;
-    public projects:any = [];
     public activeProjectId:number = null;
+    public projects:any = [];
 
     public constructor(private restangular: Restangular,
                        private router: Router){

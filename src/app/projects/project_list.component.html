@@ -2,11 +2,10 @@
     <div *ngFor="let project of projects">
         <div id="project_{{ project.id }}" class="project-container box"
              [style.background-image]="'url(' + project.published_images[0].image + ')' | safe: 'style'"
-             (mouseover)="setActiveProject(project.id)"
-             (mouseout)="resetActiveProject()"
+             (mouseenter)="setActiveProject(project.id)"
+             (mouseleave)="resetActiveProject()"
              (click)="changeRoute('project', project.id, project.slug)">
-            <div class="interface"
-                 [style.display]="(activeProjectId == project.id) ? 'block' : 'none'">
+            <div class="interface" *ngIf="activeProjectId == project.id" [@fastFadeInAnimation]>
                 <div class="view-icon"><span class="fa fa-search fa-3x"></span></div>
                 <div class="title">{{ project.title }}</div>
             </div>

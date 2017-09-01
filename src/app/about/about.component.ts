@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
-import { fadeInAnimation } from '../routing-animations';
+import { fadeInAnimation } from '../animations';
 
 
 @Component({

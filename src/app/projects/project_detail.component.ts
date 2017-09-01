@@ -3,7 +3,7 @@ import { Component, OnInit, ComponentFactoryResolver,
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
-import { fadeInAnimation } from '../routing-animations';
+import { fadeInAnimation } from '../animations';
 import { VoteComponent } from '../vote/vote.component';
 
 
@@ -68,10 +68,6 @@ export class ProjectDetailComponent implements OnInit {
             this.voteComponentRef = this.viewContainerRef.createComponent(voteComponentFactory);
             this.voteComponentRef.changeDetectorRef.detectChanges();
         });
-    }
-
-    public changeDisplayImage(image:string){
-        this.displayImage = image;
     }
 
     public changeRoute(route: string, id:number, slug:string){

@@ -29,8 +29,8 @@
         <div class="content">
             <h1>{{ project.title }}</h1>
 
-            <div class="date-separator">
-                <div class="date">{{ project.datetime_added | date:'longDate' }}</div>
+            <div class="text-separator">
+                <div class="text">{{ project.datetime_added | date:'longDate' }}</div>
             </div>
             <div class="short-description" [innerHTML]="project.short_description"></div>
             <div class="full-description" [innerHTML]="project.full_description"></div>

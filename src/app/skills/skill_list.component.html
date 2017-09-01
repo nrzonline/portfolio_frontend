@@ -1,37 +1,28 @@
-<div *ngIf="moduleIsReady" [@fadeInAnimation]>
-    <div class="col-xs-12">
-        <!--
-        <div class="filters">
-            <a href="#" class="btn filter-button">All</a>
-            <a href="#" class="btn filter-button">Back-end</a>
-            <a href="#" class="btn filter-button">Front-end</a>
-            <a href="#" class="btn filter-button">Tools</a>
-        </div>
-        -->
+<div *ngIf="moduleIsReady" class="skill-list" [@fadeInAnimation]>
+    <div class="content">
+        <div *ngFor="let category of categorizedSkills" class="category-container">
+            <div class="text-separator">
+                <div class="text">{{ category.title }}</div>
+            </div>
 
-        <div *ngFor="let category of categories">
-            <div class="category row">
-                <h1>{{ category.title }}</h1>
+            <div *ngFor="let skill of category.skills">
+                <div class="skill-wrapper">
+                    <div id="skill_{{ skill.id }}" class="skill"
+                         [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
+                         (mouseenter)="setActiveSkill(skill.id)"
+                         (mouseleave)="resetActiveSkill()"
+                         (click)="changeRoute('skills', skill.id, skill.slug)">
 
-                <div *ngFor="let skill of skills">
-                    <div *ngIf="category.id == skill.category.id ">
-                        <div class="wrapper">
-                            <div id="skill_{{ skill.id }}" class="skill"
-                                 [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
-                                 (mouseover)="setActiveSkill(skill.id)"
-                                 (mouseout)="resetActiveSkill()"
-                                 (click)="changeRoute('skills', skill.id, skill.slug)">
-                                <div class="interface"
-                                     [style.display]="(activeSkillId == skill.id) ? 'block' : 'none'">
-                                    <div class="title">{{ skill.title }}</div>
-                                </div>
-                            </div>
-                            <div class="level-wrapper">
-                                <div class="level-indicator"></div>
-                                <div class="level-progress-mask"
-                                     [style.width]="100-skill.level_percentage + '%'">
-                                </div>
-                            </div>
+                        <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
+                            <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
+                            <!--<div class="title">{{ skill.title }}</div>-->
+                        </div>
+                    </div>
+
+                    <div class="level-wrapper">
+                        <div class="level-indicator"></div>
+                        <div class="level-progress-mask"
+                             [style.width]="100-skill.level_percentage + '%'">
                         </div>
                     </div>
                 </div>

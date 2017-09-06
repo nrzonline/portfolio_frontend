@@ -1,6 +1,83 @@
-<div *ngIf="moduleIsReady" class="about-container" [@fadeInAnimation]>
+<div *ngIf="moduleIsReady" class="about" [@fadeInAnimation]>
     <div *ngIf="about">
-        <div class="row">
+        <div class="side-bar">
+            <div class="image">
+                <img src="../../assets/images/edwin_military.jpg" alt="edwin" />
+            </div>
+
+            <div class="personal-info">
+                <div>Edwin ter Horst</div>
+                <div>18th oktober 1988</div>
+                <div>Zwolle, The Netherlands</div>
+                <br />
+                <div>
+                    <span class="fa fa-suitcase icon"></span><br />
+                    Back-end web developer<br /> at Telemos ICT Solutions Group
+                </div>
+            </div>
+
+            <div class="icons">
+                <div class="icon"><span class="fa fa-facebook fa-2x"></span></div>
+                <div class="icon"><span class="fa fa-linkedin fa-2x"></span></div>
+                <div class="icon"><span class="fa fa-stack-overflow fa-2x"></span></div>
+                <div class="icon"><span class="fa fa-github fa-2x"></span></div>
+            </div>
+
+            <div class="article-data">
+                <div>Article is read by {{ uniqueReadCount }} visitors</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>{{ about.first_name }} {{ about.last_name }}</h1>
+
+            <div class="text-separator">
+                <div class="text">Web developer</div>
+            </div>
+
+            <div class="full-description" [innerHTML]="about.about"></div>
+
+            <h2>Work experience</h2>
+            <div *ngFor="let work of workExperiences; let last = last">
+                <div class="resume-item">
+                    <div class="item-header">
+                        <span class="title">{{ work.title }}</span> at
+                        <span class="organization">{{ work.organization }}</span>
+                        <br />
+                        <span class="period">
+                            {{ work.date_from | date:'y'}} -
+                            <span *ngIf="work.date_till">{{ work.date_till | date:'y' }}</span>
+                            <span *ngIf="!work.date_till">now</span>
+                            <span class="duration">(2 years)</span>
+                        </span>
+                    </div>
+
+                    <div class="item-body">
+                        <span class="organization-image"><img src="{{ work.organization_image }}"></span>
+                        <span *ngIf="work.primary_image" class="pull-right"><img src="{{ work.primary_image.image }}" alt="image"></span>
+
+                        <span class="short-description" [innerHTML]="work.short_description"></span>
+                        <div class="expand-button-container">
+                            <a class="expand-button" *ngIf="work.long_description && readMoreWorkId != work.id" (click)="readMoreWorkId = work.id">
+                                <span class="fa fa-ellipsis-h"></span> Read more
+                            </a>
+                        </div>
+
+                        <div class="long-description" *ngIf="work.long_description && readMoreWorkId == work.id">
+                            <span [innerHTML]="work.short_description"></span>
+                            <div class="expand-button-container">
+                                <a class="expand-button" (click)="readMoreWorkId = null">
+                                    <span class="fa fa-ellipsis-h"></span> Read less
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!last" class="tail">
+                    <span class="fa fa-arrow-down"></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>

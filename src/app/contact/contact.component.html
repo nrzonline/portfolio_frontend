@@ -1,6 +1,77 @@
-<div *ngIf="moduleIsReady" class="contact-container" [@fadeInAnimation]>
-    <div *ngIf="contact">
-        <div class="row">
+<div class="contact" [@fadeInAnimation]>
+    <div class="side-bar">
+        <div class="image">
+            <img src="../../assets/images/edwin_military.jpg" alt="edwin" />
         </div>
+
+        <div class="personal-info">
+            <div>Edwin ter Horst</div>
+            <div>18th oktober 1988</div>
+            <div>Zwolle, The Netherlands</div>
+            <br />
+            <div>
+                <span class="fa fa-suitcase icon"></span><br />
+                Back-end web developer at Telemos ICT Solutions Group
+            </div>
+        </div>
+
+        <div class="icons">
+            <div class="icon"><span class="fa fa-facebook fa-2x"></span></div>
+            <div class="icon"><span class="fa fa-linkedin fa-2x"></span></div>
+            <div class="icon"><span class="fa fa-stack-overflow fa-2x"></span></div>
+            <div class="icon"><span class="fa fa-github fa-2x"></span></div>
+        </div>
+
+        <div class="article-data">
+            <div *ngIf="uniqueReadCount">
+                Article is read by {{ uniqueReadCount }} visitors
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="fa fa-user"></span>
+                    </span>
+                <input type="text" class="form-control" placeholder="Your name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="fa fa-envelope-open"></span>
+                    </span>
+                <input type="text" class="form-control" placeholder="Your e-mail address">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="fa fa-phone"></span>
+                    </span>
+                <input type="text" class="form-control" placeholder="Your phone number (optional)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="fa fa-building"></span>
+                    </span>
+                <input type="text" class="form-control" placeholder="Organization name (optional)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control" rows="10" id="message" placeholder="Your message (Max. 5000 characters)"></textarea>
+        </div>
+
+        <a class="btn btn-primary">
+            Send message <span class="fa fa-send"></span>
+        </a>
     </div>
 </div>

@@ -1,5 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver,
-         ViewContainerRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
@@ -63,11 +62,9 @@ export class ProjectDetailComponent implements OnInit {
     
     @ViewChild('voteComponentContainer', {read: ViewContainerRef}) target: ViewContainerRef;
     private factoryVoteComponent(){
-        this.activatedRoute.params.subscribe((params: Params) => {
-            let voteComponentFactory = this.componentFactoryResolver.resolveComponentFactory(VoteComponent);
-            this.voteComponentRef = this.viewContainerRef.createComponent(voteComponentFactory);
-            this.voteComponentRef.changeDetectorRef.detectChanges();
-        });
+        let voteComponentFactory = this.componentFactoryResolver.resolveComponentFactory(VoteComponent);
+        this.voteComponentRef = this.viewContainerRef.createComponent(voteComponentFactory);
+        this.voteComponentRef.changeDetectorRef.detectChanges();
     }
 
     public changeRoute(route: string, id:number, slug:string){

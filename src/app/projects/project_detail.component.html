@@ -1,6 +1,6 @@
 <div *ngIf="moduleIsReady" class="project-detail" [@fadeInAnimation]>
     <div *ngIf="project">
-        <div class="side-bar side-bar-left">
+        <div class="side-bar">
             <div *ngIf="project.url">
                 <a href="{{ project.url }}" target="_blank" class="to-website">
                     To the website
@@ -32,6 +32,7 @@
             <div class="text-separator">
                 <div class="text">{{ project.datetime_added | date:'longDate' }}</div>
             </div>
+
             <div class="short-description" [innerHTML]="project.short_description"></div>
             <div class="full-description" [innerHTML]="project.full_description"></div>
         </div>

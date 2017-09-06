@@ -1,22 +1,30 @@
-<div *ngIf="moduleIsReady" class="project-container" [@fadeInAnimation]>
+<div *ngIf="moduleIsReady" class="skill-detail" [@fadeInAnimation]>
     <div *ngIf="skill">
-        <div class="row">
-            <div class="col-xs-9">
-                <div class="short-description">
-                    <h1>{{ skill.title }}, <small>{{ skill.category.title }}</small></h1>
-                    <div class="quote">
-                        <p [innerHTML]="skill.short_description"></p>
-                    </div>
-                </div>
-                <div class="full-description">
-                    <p [innerHTML]="skill.full_description"></p>
-                </div>
+        <div class="side-bar">
+            <div class="image">
+                <img src="{{ skill.image }}" alt="{{ skill.slug }}">
             </div>
-            <div class="col-xs-3">
-                <div class="image-container skill-image-container"
-                     [style.background-image]="'url(' + skill.image + ')' | safe: 'style'">
+
+            <vote-component-container [model]="'skill'" [objectId]="skill.id"></vote-component-container>
+
+            <div class="article-data">
+                <div>Published on {{ skill.datetime_added | date:'longDate' }}</div>
+                <div *ngIf="skill.datetime_modified">
+                    Last update on {{ skill.datetime_modified | date:'longDate' }}
                 </div>
+                <div>Article is read by {{ uniqueReadCount }} visitors</div>
             </div>
+        </div>
+
+        <div class="content">
+            <h1>{{ skill.title }}</h1>
+
+            <div class="text-separator">
+                <div class="text">{{ skill.category.title }}</div>
+            </div>
+
+            <div class="short-description" [innerHTML]="skill.short_description"></div>
+            <div class="full-description" [innerHTML]="skill.full_description"></div>
         </div>
     </div>
 </div>

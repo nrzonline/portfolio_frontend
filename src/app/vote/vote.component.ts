@@ -40,7 +40,7 @@ export class VoteComponent implements AfterViewInit {
     public getVotes(){
         if(!this._model || !this._objectId) return;
         
-        let requestUrl = 'vote/project/' + this._objectId + '/';
+        let requestUrl = 'vote/' + this._model + '/' + this._objectId + '/';
         
         this.restangular.one('').customGET(requestUrl).subscribe(response => {
             let votes = response.plain().votes;
@@ -52,7 +52,7 @@ export class VoteComponent implements AfterViewInit {
     }
     
     public castVote(vote:number){
-        let requestUrl = 'vote/project/' + this._objectId + '/' + vote + '/cast';
+        let requestUrl = 'vote/' + this._model + '/' + this._objectId + '/' + vote + '/cast';
         
         this.restangular.one('').customGET(requestUrl).subscribe(response => {
             if(response['success']) {

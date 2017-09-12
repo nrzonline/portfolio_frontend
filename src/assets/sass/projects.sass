@@ -6,14 +6,10 @@
   position: relative
   text-align: center
   .project-container
-    width: 90%
     max-width: 315px
-    height: 275px
     margin: 10px
-    float: left
     display: inline-block
     cursor: pointer
-
     .interface
       color: white
       background: rgba(black, .2)
@@ -38,6 +34,19 @@
         text-transform: capitalize
         letter-spacing: 1px
         text-shadow: 1px 1px 0 black
+
+  @media screen and (min-width: 466px)
+    .project-container
+      width: 45%
+      padding-top: 45%
+  @media screen and (min-width: 780px)
+    .project-container
+      width: 30%
+      padding-top: 25%
+  @media screen and (max-width: 466px)
+    .project-container
+      width: 42%
+      padding-top: 42%
 
 // PROJECT DETAILS ######################################################
 

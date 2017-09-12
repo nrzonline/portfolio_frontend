@@ -25,7 +25,7 @@ export class ProjectListComponent implements OnInit {
     public ngOnInit(){
         this.getProjects();
     }
-
+    
     private getProjects(){
         let projects = this.restangular.all('project');
 

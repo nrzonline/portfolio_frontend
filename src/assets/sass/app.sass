@@ -24,19 +24,25 @@ h1
   font-size: 28px
   text-align: center
   margin-bottom: 30px
+  @media screen and (max-width: $screen-small)
+    font-size: 22px
+    margin: 10px 0
 
 h2
   font-weight: bold
   font-size: 24px
   margin: 40px 0 20px 0
+  @media screen and (max-width: $screen-small)
+    font-size: 18px
+    margin: 20px 0 5px 0
 
 a,
 a:active,
 a:visited
   color: #19272f
-  &:hover
-    color: darken(#19272f, 20)
-    text-decoration: none
+a:hover
+  color: darken(#19272f, 20)
+  text-decoration: none
 
 .header
   width: 100%
@@ -44,6 +50,7 @@ a:visited
   max-width: 1045px
   margin: auto
   position: relative
+
   .logo
     position: absolute
     background: url('../images/logo.gif') center no-repeat
@@ -62,13 +69,13 @@ a:visited
     line-height: 45px
     text-align: center
     animation-delay: 5s
-    // background: rgba(black, .4)
     display: inline-block
     padding: 10px
     text-shadow: 0 0 20px rgba(black, .5)
     .secondary
       color: #8bcdde
       font-weight: normal
+      font-size: 24px
   .header-line
     width: 40px
     height: 4px
@@ -78,15 +85,40 @@ a:visited
   .header-line-white
     background: white
 
+  @media screen and (max-width: $screen-small)
+    height: 200px
+    .logo
+      top: 20px
+      left: -30px
+      opacity: .8
+    .title
+      left: 30%
+      top: 80px
+      font-size: 36px
+      .secondary
+        position: absolute
+        font-size: 18px
+        left: 55px
+        top: 45px
+  @media screen and (max-width: 500px)
+    .logo
+      opacity: .3
+    .title
+      left: 13%
+      font-size: 28px
+      .secondary
+        font-size: 14px
+        text-shadow: 1px 1px 0 black
+
 .large-center-col
   width: 95%
   height: calc(100% - 280px)
-  margin: 0 auto 0 0
+  margin: 0 auto 0  auto
   max-width: 1045px
   z-index: 1
 
-  @media screen and (min-width: $screen-small)
-    width: 94%
+  @media screen and (max-width: $screen-small)
+    width: 93%
     margin: 0 auto 20px auto
     border: none
 
@@ -118,11 +150,29 @@ img
   background: white
   box-shadow: 0 0 5px #d2d2d2
 
+.spacing
+  @media screen and (max-width: $screen-small)
+    margin-top: 10px
+  @media screen and (min-width: $screen-small)
+    margin-top: 20px
+  @media screen and (min-width: $screen-large)
+    margin-top: 30px
+
 footer
-  margin-top: 25px
-  .hire-me
-    padding: 40px
-    font-size: 25px
+  margin: 25px 0
+  font-size: 13px
+  color: white
+  a,
+  a:active,
+  a:visited
+    padding: 0 10px
+    color: white
+    text-shadow: 1px 1px 0 #272727
+    background: none
+    &:hover
+      color: #b1e0f1
+  @media screen and (max-width: $screen-small)
+    text-align: center
 
 // COMPONENTS ##################################################
 
@@ -173,7 +223,6 @@ footer
     text-align: center
   .icons
     overflow: hidden
-    margin-top: 30px
     text-align: center
     .icon
       color: #8c8c8c
@@ -195,6 +244,12 @@ footer
     text-align: center
     .icon
       color: gainsboro
+
+  @media screen and (max-width: $screen-small)
+    margin: 0 auto 10px auto
+    float: none
+    .article-data
+      display: none
 
 .btn,
 .tag
@@ -270,7 +325,8 @@ footer
 blockquote
   text-align: center
   float: left
-  width: 300px
+  width: 100%
+  max-width: 300px
   padding: 20px
   font-size: 16px
   font-style: italic
@@ -305,7 +361,7 @@ blockquote
     .navbar-toggle
       width: 170px
       height: 100%
-      margin: 0 0 0 15px
+      margin: 0 auto
       color: white
       font-size: 14px
       border-radius: 0
@@ -344,9 +400,6 @@ blockquote
         &:hover
           background: #334c5a
           color: white
-
-.is-active
-  background-color: #3a5565
 
 @media screen and (max-width: $screen-small)
   .navbar

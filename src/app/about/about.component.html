@@ -1,27 +1,7 @@
 <div *ngIf="moduleIsReady" class="about" [@fadeInAnimation]>
     <div *ngIf="about">
         <div class="side-bar">
-            <div class="image">
-                <img src="../../assets/images/edwin_military.jpg" alt="edwin" />
-            </div>
-
-            <div class="personal-info">
-                <div>Edwin ter Horst</div>
-                <div>18th oktober 1988</div>
-                <div>Zwolle, The Netherlands</div>
-                <br />
-                <div>
-                    <span class="fa fa-suitcase icon"></span><br />
-                    Back-end web developer<br /> at Telemos ICT Solutions Group
-                </div>
-            </div>
-
-            <div class="icons">
-                <div class="icon"><span class="fa fa-facebook fa-2x"></span></div>
-                <div class="icon"><span class="fa fa-linkedin fa-2x"></span></div>
-                <div class="icon"><span class="fa fa-stack-overflow fa-2x"></span></div>
-                <div class="icon"><span class="fa fa-github fa-2x"></span></div>
-            </div>
+            <sidebar-profile-component-container [profileId]="profileId"></sidebar-profile-component-container>
 
             <div class="article-data">
                 <div>Article is read by {{ uniqueReadCount }} visitors</div>
@@ -35,7 +15,7 @@
                 <div class="text">Web developer</div>
             </div>
 
-            <div class="full-description" [innerHTML]="about.about"></div>
+            <div class="introduction" [innerHTML]="about.about"></div>
 
             <h2>Work experience</h2>
             <div *ngFor="let work of workExperiences; let last = last">
@@ -43,7 +23,9 @@
                     <div class="item-header">
                         <span class="title">{{ work.title }}</span> at
                         <span class="organization">{{ work.organization }}</span>
-                        <br />
+
+                        <div class="spacing"></div>
+
                         <span class="period">
                             {{ work.date_from | date:'y'}} -
                             <span *ngIf="work.date_till">{{ work.date_till | date:'y' }}</span>

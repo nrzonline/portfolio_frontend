@@ -4,6 +4,7 @@ import { Http, HttpModule, BaseRequestOptions } from '@angular/http';
 import { RestangularModule } from 'ng2-restangular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule } from '@angular/forms';
 
 import { routing } from './routing';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { SkillListComponent, SkillDetailComponent } from './skills/index';
 import { AboutComponent } from './about/index';
 import { ContactComponent } from './contact/index';
 import { VoteComponent } from './vote/index';
+import { SidebarProfileComponent } from './profile/index';
 
 import { SafePipe } from '../pipes/safe.pipe';
 
@@ -24,6 +26,7 @@ export function HttpLoaderFactory(http: Http){
 export function RestangularConfigFactory(Restangular){
     Restangular.setBaseUrl('http://localhost:9000/api/');
     Restangular.setRequestSuffix('/');
+    Restangular.setDefaultHeaders({'Content-Type': 'application/json'});
 }
 
 @NgModule({
@@ -31,6 +34,7 @@ export function RestangularConfigFactory(Restangular){
        BrowserModule,
        routing,
        HttpModule,
+       FormsModule,
        RestangularModule.forRoot(RestangularConfigFactory),
        TranslateModule.forRoot({
            loader: {
@@ -50,12 +54,14 @@ export function RestangularConfigFactory(Restangular){
         AboutComponent,
         ContactComponent,
         VoteComponent,
+        SidebarProfileComponent,
     ],
     bootstrap: [
         AppComponent,
     ],
     entryComponents: [
         VoteComponent,
+        SidebarProfileComponent,
     ],
     providers: [
         BaseRequestOptions,

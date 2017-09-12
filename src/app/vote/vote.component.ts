@@ -37,7 +37,7 @@ export class VoteComponent implements AfterViewInit {
         this._model = model;
     }
     
-    public getVotes(){
+    private getVotes(){
         if(!this._model || !this._objectId) return;
         
         let requestUrl = 'vote/' + this._model + '/' + this._objectId + '/';

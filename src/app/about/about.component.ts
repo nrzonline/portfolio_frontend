@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
 import { fadeInAnimation } from '../animations';
+import { SidebarProfileComponent } from '../profile/sidebar_profile.component';
 
 
 @Component({
@@ -16,14 +17,21 @@ import { fadeInAnimation } from '../animations';
 export class AboutComponent implements OnInit {
     public moduleIsReady:boolean = false;
     public uniqueReadCount: number;
+    public profileId;
+    
     public about:any;
     public workExperiences:any;
     public educations:any;
     public interests:any;
+    
+    public sidebarProfileComponentRef:any;
 
     public constructor(private restangular: Restangular,
                        private activatedRoute: ActivatedRoute,
+                       private componentFactoryResolver: ComponentFactoryResolver,
+                       private viewContainerRef: ViewContainerRef,
                        private router: Router){
+        this.profileId = 1;
     }
 
     public ngOnInit(){
@@ -31,11 +39,12 @@ export class AboutComponent implements OnInit {
         this.getWorkExperiences();
         this.getEducations();
         this.getInterests();
-        this.getUniqueRequestCount()
+        this.getUniqueRequestCount();
+        this.factorySidebarProfileComponent();
     }
 
     private getAbout(){
-        this.restangular.one('about', 1).get().subscribe(response => {
+        this.restangular.one('profile', 1).get().subscribe(response => {
             this.about = response.plain();
             this.moduleIsReady = true;
         });
@@ -67,6 +76,13 @@ export class AboutComponent implements OnInit {
         this.restangular.all('interest').getList().subscribe(response => {
             this.interests = response.plain();
         });
+    }
+    
+    @ViewChild('sidebarProfileContainer', {read: ViewContainerRef}) target: ViewContainerRef;
+    private factorySidebarProfileComponent(){
+        let sidebarProfileComponentFactory = this.componentFactoryResolver.resolveComponentFactory(SidebarProfileComponent);
+        this.sidebarProfileComponentRef = this.viewContainerRef.createComponent(sidebarProfileComponentFactory);
+        this.sidebarProfileComponentRef.changeDetectorRef.detectChanges();
     }
     
     public changeRoute(route: string, id:number, slug:string){

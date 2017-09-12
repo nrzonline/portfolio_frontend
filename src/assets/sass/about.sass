@@ -3,21 +3,17 @@
 // ABOUT #############################################################
 
 .about
-  .side-bar
-    .image
-      margin-bottom: 20px
-    .personal-info
-      font-size: 11px
-      .icon
-        color: #bfbfbf
+  .introduction
+    padding: 5px
 
   .resume-item
     box-shadow: 0 0 3px #d2d2d2
-    width: 760px
+    overflow: hidden
     .organization-image
       float: left
       margin-right: 15px
       img
+        display: block!important
         height: 60px
         width: auto
         box-shadow: none
@@ -42,6 +38,8 @@
         width: 150px
         height: auto
         margin-left: 10px
+        @media screen and (max-width: $screen-small)
+          display: none
     .expand-button-container
       margin-top: 10px
       .expand-button
@@ -53,7 +51,8 @@
         .long-description
           padding-top: 10px
   .tail
-    width: 760px
+    width: 100%
+    max-width: 760px
     text-align: center
     color: #d2d2d2
     height: 14px

@@ -31,7 +31,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
         this.adjustBackgroundPosition();
         this.adjustBackgroundPositionOnWindowResize();
     }
-
+    
     public ngOnDestroy() {
         this.routerSubscription.unsubscribe();
         this._subscriptions.forEach(subscription => subscription.unsubscribe());

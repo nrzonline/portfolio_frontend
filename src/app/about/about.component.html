@@ -21,10 +21,10 @@
             <div *ngFor="let work of workExperiences; let last = last">
                 <div class="resume-item">
                     <div class="item-header">
-                        <span class="title">{{ work.title }}</span> at
-                        <span class="organization">{{ work.organization }}</span>
-
-                        <div class="spacing"></div>
+                        <div>
+                            <span class="title">{{ work.title }}</span> at
+                            <span class="organization">{{ work.organization }}</span>
+                        </div>
 
                         <span class="period">
                             {{ work.date_from | date:'y'}} -

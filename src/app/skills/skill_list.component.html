@@ -5,24 +5,22 @@
                 <div class="text">{{ category.title }}</div>
             </div>
 
-            <div *ngFor="let skill of category.skills">
-                <div class="skill-wrapper">
-                    <div id="skill_{{ skill.id }}" class="skill"
-                         [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
-                         (mouseenter)="setActiveSkill(skill.id)"
-                         (mouseleave)="resetActiveSkill()"
-                         (click)="changeRoute('skills', skill.id, skill.slug)">
+            <div  *ngFor="let skill of category.skills" class="skill-wrapper">
+                <div id="skill_{{ skill.id }}" class="skill"
+                     [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
+                     (mouseenter)="setActiveSkill(skill.id)"
+                     (mouseleave)="resetActiveSkill()"
+                     (click)="changeRoute('skills', skill.id, skill.slug)">
 
-                        <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
-                            <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
-                        </div>
+                    <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
+                        <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
                     </div>
+                </div>
 
-                    <div class="level-wrapper">
-                        <div class="level-indicator"></div>
-                        <div class="level-progress-mask"
-                             [style.width]="100-skill.level_percentage + '%'">
-                        </div>
+                <div class="level-wrapper">
+                    <div class="level-indicator"></div>
+                    <div class="level-progress-mask"
+                         [style.width]="100-skill.level_percentage + '%'">
                     </div>
                 </div>
             </div>

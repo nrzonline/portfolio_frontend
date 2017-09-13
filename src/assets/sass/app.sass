@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700)
-
 @import '../../../node_modules/font-awesome/css/font-awesome.css'
 
 @import 'parameters.sass'
@@ -18,6 +16,13 @@ html, body
   background-repeat: no-repeat
   background-attachment: fixed
   -webkit-backface-visibility: hidden
+
+@font-face
+  font-family: 'Montserrat'
+  font-style: normal
+  font-weight: 400
+  src: url('../fonts/montserrat/montserrat-v10-latin-regular.eot')
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url('../fonts/montserrat/montserrat-v10-latin-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/montserrat/montserrat-v10-latin-regular.woff2') format('woff2'), url('../fonts/montserrat/montserrat-v10-latin-regular.woff') format('woff'), url('../fonts/montserrat/montserrat-v10-latin-regular.ttf') format('truetype'), url('../fonts/montserrat/montserrat-v10-latin-regular.svg#Montserrat') format('svg')
 
 h1
   font-weight: bold
@@ -72,6 +77,7 @@ a:hover
     display: inline-block
     padding: 10px
     text-shadow: 0 0 20px rgba(black, .5)
+    letter-spacing: 2px
     .secondary
       color: #8bcdde
       font-weight: normal
@@ -95,6 +101,7 @@ a:hover
       left: 30%
       top: 80px
       font-size: 36px
+      letter-spacing: 1px
       .secondary
         position: absolute
         font-size: 18px
@@ -106,6 +113,7 @@ a:hover
     .title
       left: 13%
       font-size: 28px
+      letter-spacing: 0
       .secondary
         font-size: 14px
         text-shadow: 1px 1px 0 black
@@ -225,7 +233,6 @@ footer
     overflow: hidden
     text-align: center
     .icon
-      color: #8c8c8c
       display: inline-block
       padding: 5px
       width: 40px
@@ -234,8 +241,13 @@ footer
       border: 1px gainsboro solid
       cursor: pointer
       transition: .1s all
+      a
+        transition: .1s all
+        color: #8c8c8c
       &:hover
-        color: #283b46
+        a
+          color: #283b46
+
   .article-data
     clear: both
     margin-top: 30px

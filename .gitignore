@@ -1,6 +1,10 @@
 node_modules/
 .idea/
+build/
 
+src/**/*/*.js
+src/*.js
+
+config/*.js
 npm-debug.log
 *.js.map
-*.js

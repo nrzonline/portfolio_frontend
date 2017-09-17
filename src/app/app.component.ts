@@ -3,7 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',

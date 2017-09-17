@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var helpers = require('./helpers');
 
 module.exports = {
@@ -52,34 +53,38 @@ module.exports = {
     },
 
     plugins: [
-    new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin('[name].css'),
 
-    // Workaround for angular/angular#11580
-    new webpack.ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        helpers.root('./src'), // location of your src
-        {} // a map of your routes
-    ),
+        // Workaround for angular/angular#11580
+        new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            helpers.root('./src'), // location of your src
+            {} // a map of your routes
+        ),
 
-    new webpack.optimize.CommonsChunkPlugin({
-        name: ['app', 'vendor', 'polyfills']
-    }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendor', 'polyfills']
+        }),
 
-    new HtmlWebpackPlugin({
-        template: 'src/index.html'
-    }),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
+        }),
 
-    new webpack.ProvidePlugin({
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery'
-    })
-],
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        }),
 
-output: {
-    path: helpers.root('build'),
+        new CopyWebpackPlugin([
+            { from: helpers.root('src/assets'), to: 'assets' }
+        ])
+    ],
+
+    output: {
+        path: helpers.root('build'),
         filename: '[name].js',
         chunkFilename: '[id].chunk.js'
-}
+    }
 };

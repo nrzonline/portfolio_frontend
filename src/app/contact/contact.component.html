@@ -12,7 +12,7 @@
     <div class="contact-container">
         <h1>Feel free to contact me</h1>
 
-        <form (ngSubmit)="sendContactForm()" #contactForm="ngForm" id="contact-form" role="form" novalidate>
+        <form (ngSubmit)="sendContactForm()" #contactForm="ngForm" id="contact-form" role="form" novalidate autocomplete="off">
             <div class="form-group">
                 <div class="input-group">
                         <span class="input-group-addon">
@@ -87,14 +87,27 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-send">
-                <span *ngIf="!formSending">
-                    Send message <span class="fa fa-send"></span>
-                </span>
-                <span *ngIf="formSending">
-                    Sending.. <span class="fa fa-spinner fa-spin"></span>
-                </span>
-            </button>
+            <div class="form-group">
+                <div class="input-group no-borders">
+                    <span class="input-group-addon no-padding">
+                        <span *ngIf="!formSubmitted" class="fa fa-send"></span>
+                        <span *ngIf="formSubmitted" class="fa fa-check"></span>
+                    </span>
+
+                    <button *ngIf="!formSubmitted" type="submit" class="btn btn-primary btn-send" [@fadeInAnimation]>
+                        <span *ngIf="!formSending">
+                            Send message <span class="fa fa-send"></span>
+                        </span>
+                            <span *ngIf="formSending">
+                            Sending.. <span class="fa fa-spinner fa-spin"></span>
+                        </span>
+                    </button>
+
+                    <div *ngIf="formSubmitted" class="submit-success-message" [@fadeInAnimation]>
+                        Thank you, your message has been send. I will respond as soon as possible!
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>

@@ -25,6 +25,7 @@ export function HttpLoaderFactory(http: Http){
 
 export function RestangularConfigFactory(Restangular){
     Restangular.setBaseUrl('http://api.nrzonline.nl');
+    // Restangular.setBaseUrl('http://localhost:9000');
     Restangular.setRequestSuffix('/');
     Restangular.setDefaultHeaders({'Content-Type': 'application/json'});
 }

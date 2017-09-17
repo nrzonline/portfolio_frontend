@@ -2,7 +2,7 @@ import { Input, Component, OnInit, ComponentFactoryResolver, ViewChild, ViewCont
 import { Router } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
-import { fadeInAnimation } from '../animations';
+import { fadeInAnimation, fadeOutAnimation } from '../animations';
 import { SidebarProfileComponent } from '../profile/sidebar_profile.component';
 
 
@@ -10,8 +10,8 @@ import { SidebarProfileComponent } from '../profile/sidebar_profile.component';
     selector: 'about',
     templateUrl: 'contact.component.html',
     styleUrls: ['../../assets/sass/contact.sass'],
-    animations: [fadeInAnimation],
-    host: {'[@fadeInAnimation]': ''}
+    animations: [fadeInAnimation, fadeOutAnimation],
+    host: {'[@fadeInAnimation]': '', '[@fadeOutAnimation]': ''}
 })
 
 export class ContactComponent implements OnInit {
@@ -21,13 +21,13 @@ export class ContactComponent implements OnInit {
     @Input() organization:string;
     @Input() subject:string;
     @Input() message:string;
+    public formErrors:any = [];
+    public formSending:boolean;
+    public formSubmitted:boolean;
     
     public moduleIsReady:boolean = false;
     public contact:any;
     public profileId:number;
-    public formErrors:any = [];
-    public formSubmitted:boolean;
-    public formSending:boolean;
     
     public sidebarProfileComponentRef:any;
 
@@ -39,21 +39,15 @@ export class ContactComponent implements OnInit {
     }
 
     public ngOnInit(){
-        this.getContact();
         this.factorySidebarProfileComponent();
     }
 
-    private getContact(){
-    }
-    
     public sendContactForm(){
         let contactFormBody = this.buildContactFormBody();
         this.formSending = true;
         
-        this.restangular.all('contact-message').customPOST(contactFormBody).subscribe(response => {
-            this.formSubmitted = true;
-            this.formErrors = [];
-            this.formSending = false;
+        this.restangular.all('contact-message').post(contactFormBody).subscribe(response => {
+            this.successfulSubmit();
         }, errorResponse => {
             this.formErrors = errorResponse.data;
             this.formSending = false;
@@ -69,6 +63,26 @@ export class ContactComponent implements OnInit {
             'subject': this.subject,
             'message': this.message,
         }
+    }
+    
+    private successfulSubmit(){
+        this.formErrors = [];
+        this.formSubmitted = true;
+        this.formSending = false;
+        this.clearNonResubmitableFields();
+        this.setTemporaryFormSubmitted();
+    }
+    
+    private clearNonResubmitableFields(){
+        this.subject = null;
+        this.message = null;
+    }
+    
+    private setTemporaryFormSubmitted(){
+        this.formSubmitted = true;
+        setTimeout(()=> {
+            this.formSubmitted = false;
+        }, 5000);
     }
     
     @ViewChild('sidebarProfileContainer', {read: ViewContainerRef}) target: ViewContainerRef;

@@ -7,11 +7,11 @@ import { SidebarProfileComponent } from '../profile/sidebar_profile.component';
 
 
 @Component({
-    selector: 'about',
+    selector: 'contact',
     templateUrl: 'contact.component.html',
     styleUrls: ['../../assets/sass/contact.sass'],
-    animations: [fadeInAnimation, fadeOutAnimation],
-    host: {'[@fadeInAnimation]': '', '[@fadeOutAnimation]': ''}
+    animations: [fadeInAnimation],
+    host: {'[@fadeInAnimation]': ''}
 })
 
 export class ContactComponent implements OnInit {
@@ -40,6 +40,7 @@ export class ContactComponent implements OnInit {
 
     public ngOnInit(){
         this.factorySidebarProfileComponent();
+        this.moduleIsReady = true;
     }
 
     public sendContactForm(){

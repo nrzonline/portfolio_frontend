@@ -1,5 +1,16 @@
 <div *ngIf="moduleIsReady" class="about" [@fadeInAnimation]>
-    <div *ngIf="about">
+    <div *ngIf="!about.is_published">
+        <div class="meh">
+            <div class="icon">
+                <span class="fa fa-meh-o fa-8x"></span> Meh!
+            </div>
+            <div class="error-message">
+                Sorry, the profile has not yet been published.
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="about.is_published">
         <div class="side-bar">
             <sidebar-profile-component-container [profileId]="profileId"></sidebar-profile-component-container>
 
@@ -61,8 +72,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div *ngIf="!about">
-        Loading
     </div>
 </div>

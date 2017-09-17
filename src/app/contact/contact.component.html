@@ -1,4 +1,4 @@
-<div class="contact" [@fadeInAnimation]>
+<div *ngIf="moduleIsReady" class="contact" [@fadeInAnimation]>
     <div class="side-bar">
         <sidebar-profile-component-container [profileId]="profileId"></sidebar-profile-component-container>
 

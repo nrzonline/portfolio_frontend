@@ -1,26 +1,43 @@
-<div *ngIf="moduleIsReady" class="skill-list" [@fadeInAnimation]>
-    <div class="content">
-        <div *ngFor="let category of categorizedSkills" class="category-container">
-            <div class="text-separator">
-                <div class="text">{{ category.title }}</div>
+<div *ngIf="moduleIsReady">
+    <div *ngIf="!skillsAvailable">
+        <div class="meh">
+            <div class="icon">
+                <span class="fa fa-meh-o fa-8x"></span> Meh!
             </div>
+            <div class="error-message">
+                Sorry, there are no skills listed yet.
+            </div>
+        </div>
+    </div>
 
-            <div  *ngFor="let skill of category.skills" class="skill-wrapper">
-                <div id="skill_{{ skill.id }}" class="skill"
-                     [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
-                     (mouseenter)="setActiveSkill(skill.id)"
-                     (mouseleave)="resetActiveSkill()"
-                     (click)="changeRoute('skills', skill.id, skill.slug)">
-
-                    <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
-                        <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
+    <div class="skill-list" [@fadeInAnimation]>
+        <div class="content">
+            <div *ngFor="let category of categorizedSkills" class="category-container">
+                <div *ngIf="category.skills.length > 0; let skillsAvailable=True">
+                    <div class="text-separator">
+                        <div class="text">{{ category.title }}</div>
                     </div>
-                </div>
 
-                <div class="level-wrapper">
-                    <div class="level-indicator"></div>
-                    <div class="level-progress-mask"
-                         [style.width]="100-skill.level_percentage + '%'">
+                    <div *ngFor="let skill of category.skills" class="skill-wrapper">
+                        <div *ngIf="skills">
+                            <div id="skill_{{ skill.id }}" class="skill"
+                                 [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
+                                 (mouseenter)="setActiveSkill(skill.id)"
+                                 (mouseleave)="resetActiveSkill()"
+                                 (click)="changeRoute('skills', skill.id, skill.slug)">
+
+                                <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
+                                    <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
+                                </div>
+                            </div>
+
+                            <div class="level-wrapper">
+                                <div class="level-indicator"></div>
+                                <div class="level-progress-mask"
+                                     [style.width]="100-skill.level_percentage + '%'">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

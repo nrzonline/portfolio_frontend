@@ -19,7 +19,7 @@ export class AboutComponent implements OnInit {
     public uniqueReadCount: number;
     public profileId;
     
-    public about:any;
+    public profile:any;
     public workExperiences:any;
     public educations:any;
     public interests:any;
@@ -35,7 +35,7 @@ export class AboutComponent implements OnInit {
     }
 
     public ngOnInit(){
-        this.getAbout();
+        this.getProfile();
         this.getWorkExperiences();
         this.getEducations();
         this.getInterests();
@@ -43,9 +43,9 @@ export class AboutComponent implements OnInit {
         this.factorySidebarProfileComponent();
     }
 
-    private getAbout(){
+    private getProfile(){
         this.restangular.one('profile', 1).get().subscribe(response => {
-            this.about = response.plain();
+            this.profile = response.plain();
             this.moduleIsReady = true;
         });
     }

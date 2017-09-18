@@ -1,6 +1,7 @@
-<div *ngIf="_profileId">
+<div *ngIf="_profileId && profile">
     <div class="image">
-        <img src="../../assets/images/edwin_military.jpg" alt="edwin" />
+        <img *ngIf="profile.photo" src="{{ profile.photo }}" alt="profile image" />
+        <img *ngIf="!profile.photo" src="../../assets/images/no-image.jpg" alt="no photo">
     </div>
 
     <div class="spacing"></div>

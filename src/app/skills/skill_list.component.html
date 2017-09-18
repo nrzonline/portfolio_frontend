@@ -1,5 +1,8 @@
+<div *ngIf="!moduleIsReady">
+    Loading..
+</div>
 <div *ngIf="moduleIsReady">
-    <div *ngIf="!skillsAvailable">
+    <div *ngIf="categorizedSkills.length == 0">
         <div class="meh">
             <div class="icon">
                 <span class="fa fa-meh-o fa-8x"></span> Meh!
@@ -10,32 +13,30 @@
         </div>
     </div>
 
-    <div class="skill-list" [@fadeInAnimation]>
-        <div class="content">
-            <div *ngFor="let category of categorizedSkills" class="category-container">
-                <div *ngIf="category.skills.length > 0; let skillsAvailable=True">
+    <div  class="skill-list" [@fadeInAnimation]>
+        <div class="content" *ngIf="categorizedSkills">
+            <div *ngFor="let category of categorizedSkills">
+                <div *ngIf="category.skills.length > 0;" class="category-container">
                     <div class="text-separator">
                         <div class="text">{{ category.title }}</div>
                     </div>
 
                     <div *ngFor="let skill of category.skills" class="skill-wrapper">
-                        <div *ngIf="skills">
-                            <div id="skill_{{ skill.id }}" class="skill"
-                                 [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
-                                 (mouseenter)="setActiveSkill(skill.id)"
-                                 (mouseleave)="resetActiveSkill()"
-                                 (click)="changeRoute('skills', skill.id, skill.slug)">
+                        <div id="skill_{{ skill.id }}" class="skill"
+                             [style.background-image]="'url(' + skill.image + ')' | safe: 'style'"
+                             (mouseenter)="setActiveSkill(skill.id)"
+                             (mouseleave)="resetActiveSkill()"
+                             (click)="changeRoute('skills', skill.id, skill.slug)">
 
-                                <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
-                                    <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
-                                </div>
+                            <div class="interface" *ngIf="activeSkillId == skill.id" [@fastFadeInAnimation]>
+                                <div class="view-icon"><span class="fa fa-search fa-2x"></span></div>
                             </div>
+                        </div>
 
-                            <div class="level-wrapper">
-                                <div class="level-indicator"></div>
-                                <div class="level-progress-mask"
-                                     [style.width]="100-skill.level_percentage + '%'">
-                                </div>
+                        <div class="level-wrapper">
+                            <div class="level-indicator"></div>
+                            <div class="level-progress-mask"
+                                 [style.width]="getSkillLevelPercentage(skill.level, skill.level_max) + '%'">
                             </div>
                         </div>
                     </div>

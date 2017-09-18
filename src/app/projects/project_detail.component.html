@@ -1,6 +1,10 @@
 <div *ngIf="moduleIsReady" class="project-detail" [@fadeInAnimation]>
     <div *ngIf="project">
         <div class="side-bar">
+            <div *ngIf="project.primary_image" class="image">
+                <img src="{{ project.primary_image }}" alt="Project Image">
+            </div>
+
             <div *ngIf="project.url">
                 <a href="{{ project.url }}" target="_blank" class="to-website">
                     To the website
@@ -20,7 +24,7 @@
             <div class="article-data">
                 <div>Published on {{ project.datetime_added | date:'longDate' }}</div>
                 <div *ngIf="project.datetime_modified">
-                    Last update on {{ project.datetime_modified | date:'longDate' }}
+                    Updated on {{ project.datetime_modified | date:'longDate' }}
                 </div>
                 <div>Article is read by {{ uniqueReadCount }} visitors</div>
             </div>

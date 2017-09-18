@@ -14,7 +14,8 @@ import { fadeInAnimation, fastFadeInAnimation } from '../animations';
 export class SkillListComponent implements OnInit {
     public moduleIsReady:boolean = false;
     public activeSkillId:number = null;
-    public categorizedSkills:any;
+    public categorizedSkills:any = [];
+    public moduleHasSkillsToDisplay:boolean = false;
 
     public constructor(private restangular: Restangular,
                        private router: Router){
@@ -25,19 +26,41 @@ export class SkillListComponent implements OnInit {
     }
 
     private getCategorizedSkills(){
-        this.restangular.all('skill-category').getList().subscribe(response => {
-            this.categorizedSkills = response.plain();
-            this.addSkillLevelPercentageToCategorizedSkills();
-            this.moduleIsReady = true;
+        this.restangular.all('skill-category').getList().subscribe(categoriesResponse => {
+            let categories:any = categoriesResponse.plain();
+            
+            if(categories.length == 0){
+                this.moduleIsReady = true;
+            }
+            
+            let iterationNumber = 0;
+            for(let category of categories){
+                let categoryContainer:any = category;
+                
+                this.restangular.all('').customGET('skill', {
+                    'category': category.id
+                }).subscribe(skillsResponse => {
+                    let skills = skillsResponse.plain();
+                    
+                    if(skills.length > 0) {
+                        categoryContainer['skills'] = skills;
+                        this.categorizedSkills.push(categoryContainer);
+                    }
+                    iterationNumber++;
+                    this.setModuleReadyOnLastIteration(iterationNumber, categories.length);
+                });
+            }
         });
     }
-
-    private addSkillLevelPercentageToCategorizedSkills(){
-        for(let category of this.categorizedSkills) {
-            for(let skill of category.skills) {
-                skill.level_percentage = skill.level / skill.level_max * 100;
-            }
+    
+    private setModuleReadyOnLastIteration(iterationNumber, iterationLength){
+        if(iterationNumber == iterationLength){
+            this.moduleIsReady = true;
         }
+    }
+    
+    public getSkillLevelPercentage(level:number, level_max:number){
+        return 100-(level/level_max)*100;
     }
 
     public setActiveSkill(id:number){

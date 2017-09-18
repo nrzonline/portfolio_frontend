@@ -16,7 +16,7 @@ import { ContactComponent } from './contact/index';
 import { VoteComponent } from './vote/index';
 import { SidebarProfileComponent } from './profile/index';
 
-import { SafePipe } from '../pipes/safe.pipe';
+import { SafePipe, KeysPipe } from '../pipes/index';
 
 
 export function HttpLoaderFactory(http: Http){
@@ -24,8 +24,8 @@ export function HttpLoaderFactory(http: Http){
 }
 
 export function RestangularConfigFactory(Restangular){
-    Restangular.setBaseUrl('http://api.nrzonline.nl');
-    // Restangular.setBaseUrl('http://localhost:9000');
+    // Restangular.setBaseUrl('http://api.nrzonline.nl');
+    Restangular.setBaseUrl('http://localhost:9000');
     Restangular.setRequestSuffix('/');
     Restangular.setDefaultHeaders({'Content-Type': 'application/json'});
 }
@@ -48,6 +48,7 @@ export function RestangularConfigFactory(Restangular){
     declarations: [
         AppComponent,
         SafePipe,
+        KeysPipe,
         ProjectListComponent,
         ProjectDetailComponent,
         SkillListComponent,

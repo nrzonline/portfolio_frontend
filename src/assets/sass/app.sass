@@ -166,30 +166,25 @@ img
   @media screen and (min-width: $screen-large)
     margin-top: 30px
 
-.meh
-  text-align: center
-  .icon
-    font-weight: bold
-    padding: 30px 0 10px 0
-  .error-message
-    font-size: 25px
-
-.fa-8x
-  font-size: 8em
-
 footer
   margin: 25px 0
   font-size: 13px
   color: white
   a,
   a:active,
-  a:visited
+  a:visited,
+  a:focus,
+  a:focus
     padding: 0 10px
     color: white
     text-shadow: 1px 1px 0 #272727
     background: none
+    text-decoration: none
     &:hover
-      color: #b1e0f1
+      color: #69e6e2
+  a.is-active
+    color: #69e6e2
+    background: none
   @media screen and (max-width: $screen-small)
     text-align: center
 
@@ -361,6 +356,17 @@ blockquote
     font-size: 35px
     float: left
 
+.meh
+  text-align: center
+  .icon
+    font-weight: bold
+    padding: 30px 0 10px 0
+  .error-message
+    font-size: 25px
+
+.fa-8x
+  font-size: 8em
+
 // BOOTSTRAP ################################################
 
 .navbar
@@ -405,23 +411,16 @@ blockquote
       text-align: center
       letter-spacing: 1px
       background: #20333e
-      >a
+      a
         color: white
         padding: 15px
         &:hover,
         &:focus
           color: white
           background: #3a5565
-    .active
-      a,
-      a:visited,
-      a:active,
-      a:focus
+      a.is-active
         color: white
-        background: #2c4350
-        &:hover
-          background: #334c5a
-          color: white
+        background: #3a5565
 
 @media screen and (max-width: $screen-small)
   .navbar

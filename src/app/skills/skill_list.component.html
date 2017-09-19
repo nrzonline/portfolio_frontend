@@ -1,7 +1,10 @@
 <div *ngIf="!moduleIsReady">
-    Loading..
+    <div class="loading">
+        <span class="fa fa-spinner fa-spin"></span>
+    </div>
 </div>
-<div *ngIf="moduleIsReady">
+
+<div *ngIf="moduleIsReady" [@fadeInAnimation]>
     <div *ngIf="categorizedSkills.length == 0">
         <div class="meh">
             <div class="icon">
@@ -13,7 +16,7 @@
         </div>
     </div>
 
-    <div  class="skill-list" [@fadeInAnimation]>
+    <div class="skill-list">
         <div class="content" *ngIf="categorizedSkills">
             <div *ngFor="let category of categorizedSkills">
                 <div *ngIf="category.skills.length > 0;" class="category-container">

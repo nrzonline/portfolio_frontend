@@ -150,13 +150,13 @@ a:hover
   width: 100%
   padding: 0
 
-img
-  width: 150px
-  height: 150px
-  padding: 5px
-  border: 1px gainsboro solid
-  background: white
-  box-shadow: 0 0 5px #d2d2d2
+//img
+//  width: 150px
+//  height: 150px
+//  padding: 5px
+//  border: 1px gainsboro solid
+//  background: white
+//  box-shadow: 0 0 5px #d2d2d2
 
 .spacing
   @media screen and (max-width: $screen-small)
@@ -181,9 +181,9 @@ footer
     background: none
     text-decoration: none
     &:hover
-      color: #69e6e2
+      color: #9fdeee
   a.is-active
-    color: #69e6e2
+    color: #9fdeee
     background: none
   @media screen and (max-width: $screen-small)
     text-align: center
@@ -214,18 +214,27 @@ footer
   margin: 0 0 10px 20px
   box-shadow: 0 0 3px #d2d2d2
   background: #f7f7f7
+  .image
+    img
+      padding: 10px
+      max-width: 170px
+      max-height: 170px
+      margin: auto
+      background: white
+      border: 1px gainsboro solid
+      box-shadow: 0 0 3px #d2d2d2
   .to-website
     display: inline-block
     width: 180px
     padding: 10px
     text-align: center
-    margin: 0 5px 25px 5px
     color: #283b46
     border: 1px gainsboro solid
     background: white
     font-size: 14px
     transition: .1s all
     cursor: pointer
+    box-shadow: 0 0 3px #d2d2d2
     &:hover
       background: lighten(#19272f, 15)
       color: white
@@ -253,10 +262,8 @@ footer
       &:hover
         a
           color: #283b46
-
   .article-data
     clear: both
-    margin-top: 30px
     font-size: 10px
     color: #828282
     text-align: center
@@ -281,6 +288,7 @@ footer
   background: white
   cursor: pointer
   transition: .1s all
+  box-shadow: 0 0 3px #d2d2d2
   &:hover,
   &:active,
   &:visited,
@@ -291,7 +299,6 @@ footer
     border-color: #283b46
 
 .voting
-  margin-top: 30px
   color: #3a5565
   left: 50%
   .vote-option
@@ -301,6 +308,7 @@ footer
     margin: 0 1px
     background: white
     cursor: pointer
+    box-shadow: 0 0 3px #d2d2d2
   .vote-count
     background: #3a5565
     color: white
@@ -355,6 +363,10 @@ blockquote
     content: open-quote
     font-size: 35px
     float: left
+
+.loading
+  margin: 0 auto
+  text-align: center
 
 .meh
   text-align: center

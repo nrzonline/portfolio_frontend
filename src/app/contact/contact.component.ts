@@ -2,7 +2,7 @@ import { Input, Component, OnInit, ComponentFactoryResolver, ViewChild, ViewCont
 import { Router } from '@angular/router';
 import { Restangular } from 'ng2-restangular';
 
-import { fadeInAnimation, fadeOutAnimation } from '../animations';
+import { fadeInAnimation } from '../animations';
 import { SidebarProfileComponent } from '../profile/sidebar_profile.component';
 
 

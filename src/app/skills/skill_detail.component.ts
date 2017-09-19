@@ -47,9 +47,9 @@ export class SkillDetailComponent implements OnInit {
     private getUniqueRequestCount(){
         this.activatedRoute.params.subscribe((params: Params) => {
             let projectId = params['id'];
-            let path = '/skill/' + projectId + '/';
+            let path = 'skill/' + projectId;
             
-            this.restangular.one('').customGET('request-count/' + path + '/unique/').subscribe(response => {
+            this.restangular.one('').customGET('views/' + path + '/unique/').subscribe(response => {
                 this.uniqueReadCount = response.plain().count;
             });
         });

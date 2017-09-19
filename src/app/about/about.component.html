@@ -1,4 +1,10 @@
-<div *ngIf="moduleIsReady" class="about" [@fadeInAnimation]>
+<div *ngIf="!moduleIsReady">
+    <div class="loading">
+        <span class="fa fa-spinner fa-spin"></span>
+    </div>
+</div>
+
+<div *ngIf="moduleIsReady" [@fadeInAnimation]>
     <div *ngIf="!profile.is_published">
         <div class="meh">
             <div class="icon">
@@ -10,9 +16,10 @@
         </div>
     </div>
 
-    <div *ngIf="profile.is_published">
+    <div *ngIf="profile.is_published" class="about">
         <div class="side-bar">
             <sidebar-profile-component-container [profileId]="profileId"></sidebar-profile-component-container>
+            <div class="spacing"></div>
 
             <div class="article-data">
                 <div>Article is read by {{ uniqueReadCount }} visitors</div>
@@ -26,9 +33,20 @@
                 <div class="text">Web developer</div>
             </div>
 
+            <div *ngIf="!profile.about && !profile.workExperiences">
+                <div class="meh">
+                    <div class="icon">
+                        <span class="fa fa-meh-o fa-8x"></span> Meh!
+                    </div>
+                    <div class="error-message">
+                        Sorry, no more information about me available yet.
+                    </div>
+                </div>
+            </div>
+
             <div class="introduction" [innerHTML]="profile.about"></div>
 
-            <div *ngIf="workExperiences.length > 0">
+            <div *ngIf="workExperiences && workExperiences.length > 0">
                 <h2>Work experience</h2>
                 <div *ngFor="let work of workExperiences; let last = last">
                     <div class="resume-item">

@@ -44,7 +44,7 @@ export class AboutComponent implements OnInit {
     }
 
     private getProfile(){
-        this.restangular.one('profile', 1).get().subscribe(response => {
+        this.restangular.one('profile', this.profileId).get().subscribe(response => {
             this.profile = response.plain();
             this.moduleIsReady = true;
         });
@@ -52,9 +52,9 @@ export class AboutComponent implements OnInit {
     
     private getUniqueRequestCount(){
         this.activatedRoute.params.subscribe((params: Params) => {
-            let path = '/about/';
+            let path = 'profile/' + this.profileId;
             
-            this.restangular.one('').customGET('request-count/' + path + '/unique/').subscribe(response => {
+            this.restangular.one('').customGET('views/' + path + '/unique/').subscribe(response => {
                 this.uniqueReadCount = response.plain().count;
             });
         });

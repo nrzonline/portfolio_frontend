@@ -52,9 +52,9 @@ export class ProjectDetailComponent implements OnInit {
     private getUniqueRequestCount(){
         this.activatedRoute.params.subscribe((params: Params) => {
             let projectId = params['id'];
-            let path = '/project/' + projectId + '/';
+            let path = 'project/' + projectId + '';
             
-            this.restangular.one('').customGET('request-count/' + path + '/unique/').subscribe(response => {
+            this.restangular.one('').customGET('views/' + path + '/unique/').subscribe(response => {
                 this.uniqueReadCount = response.plain().count;
             });
         });

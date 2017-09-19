@@ -1,16 +1,24 @@
+<div *ngIf="!moduleIsReady">
+    <div class="loading">
+        <span class="fa fa-spinner fa-spin"></span>
+    </div>
+</div>
+
 <div *ngIf="moduleIsReady" class="skill-detail" [@fadeInAnimation]>
     <div *ngIf="skill">
         <div class="side-bar">
             <div class="image">
                 <img src="{{ skill.image }}" alt="{{ skill.slug }}">
+                <div class="spacing"></div>
             </div>
 
             <vote-component-container [model]="'skill'" [objectId]="skill.id"></vote-component-container>
+            <div class="spacing"></div>
 
             <div class="article-data">
                 <div>Published on {{ skill.datetime_added | date:'longDate' }}</div>
                 <div *ngIf="skill.datetime_modified">
-                    Last update on {{ skill.datetime_modified | date:'longDate' }}
+                    Updated on {{ skill.datetime_modified | date:'longDate' }}
                 </div>
                 <div>Article is read by {{ uniqueReadCount }} visitors</div>
             </div>

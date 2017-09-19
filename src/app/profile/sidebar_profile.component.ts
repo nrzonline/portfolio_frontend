@@ -9,6 +9,7 @@ import { Restangular } from 'ng2-restangular';
 })
 
 export class SidebarProfileComponent implements AfterViewInit {
+    public moduleIsReady:boolean;
     public _profileId:number;
     private profile:any;
     
@@ -30,6 +31,7 @@ export class SidebarProfileComponent implements AfterViewInit {
         
         this.restangular.one('profile', this._profileId).get().subscribe(response => {
             this.profile = response.plain();
+            this.moduleIsReady = true;
         });
     }
 }

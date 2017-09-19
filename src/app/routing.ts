@@ -7,10 +7,11 @@ import { ContactComponent } from './contact/index';
 
 
 const appRoutes: Routes = [
-    { path: '', component: ProjectListComponent },
-    { path: 'project', component: ProjectListComponent },
-    { path: 'project/:id', component: ProjectDetailComponent },
-    { path: 'project/:id/:slug', component: ProjectDetailComponent },
+    { path: '', redirectTo: 'projects', pathMatch: 'full' },
+    
+    { path: 'projects', component: ProjectListComponent },
+    { path: 'projects/:id', component: ProjectDetailComponent },
+    { path: 'projects/:id/:slug', component: ProjectDetailComponent },
 
     { path: 'skills', component: SkillListComponent },
     { path: 'skills/:id', component: SkillDetailComponent },
@@ -18,9 +19,9 @@ const appRoutes: Routes = [
 
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
-
+    
+    { path: '**', redirectTo: 'projects' }
     // { path: '404', component: notFoundComponent },
-    // { path: '*', redirectTo: '/404' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

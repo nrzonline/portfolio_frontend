@@ -40,7 +40,7 @@ export class VoteComponent implements AfterViewInit {
     private getVotes(){
         if(!this._model || !this._objectId) return;
         
-        let requestUrl = 'vote/' + this._model + '/' + this._objectId + '/';
+        let requestUrl = 'vote/' + this._model + '/' + this._objectId;
         
         this.restangular.one('').customGET(requestUrl).subscribe(response => {
             let votes = response.plain().votes;

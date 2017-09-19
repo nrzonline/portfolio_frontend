@@ -1,45 +1,53 @@
-<div *ngIf="_profileId && profile">
-    <div class="image">
-        <img *ngIf="profile.photo" src="{{ profile.photo }}" alt="profile image" />
-        <img *ngIf="!profile.photo" src="../../assets/images/no-image.jpg" alt="no photo">
-    </div>
-
-    <div class="spacing"></div>
-
-    <div class="personal-info">
-        <div>{{ profile.first_name }} {{ profile.last_name }}</div>
-        <div>{{ profile.date_of_birth | date:'longDate' }}</div>
-        <div>{{ profile.location }}</div>
-
-        <div class="occupation" *ngIf="profile.occupation">
-            <div class="spacing"></div>
-            <span class="fa fa-suitcase icon"></span><br />
-            {{ profile.occupation }}
+<div *ngIf="_profileId">
+    <div *ngIf="!moduleIsReady">
+        <div class="loading">
+            <span class="fa fa-spinner fa-spin"></span>
         </div>
     </div>
 
-    <div class="spacing"></div>
+    <div *ngIf="moduleIsReady && profile">
+        <div class="image">
+            <img *ngIf="profile.photo" src="{{ profile.photo }}" alt="profile image" />
+            <img *ngIf="!profile.photo" src="../../assets/images/no-image.jpg" alt="no photo">
+        </div>
 
-    <div class="icons">
-        <div class="icon" *ngIf="profile.facebook_url">
-            <a href="{{ profile.facebook_url }}" target="_blank">
-                <span class="fa fa-facebook fa-2x"></span>
-            </a>
+        <div class="spacing"></div>
+
+        <div class="personal-info">
+            <div>{{ profile.first_name }} {{ profile.last_name }}</div>
+            <div>{{ profile.date_of_birth | date:'longDate' }}</div>
+            <div>{{ profile.location }}</div>
+
+            <div class="occupation" *ngIf="profile.occupation">
+                <div class="spacing"></div>
+                <span class="fa fa-suitcase icon"></span><br />
+                {{ profile.occupation }}
+            </div>
         </div>
-        <div class="icon" *ngIf="profile.linkedin_url">
-            <a href="{{ profile.linkedin_url }}" target="_blank">
-                <span class="fa fa-linkedin fa-2x"></span>
-            </a>
-        </div>
-        <div class="icon" *ngIf="profile.stackoverflow_url">
-            <a href="{{ profile.stackoverflow_url }}" target="_blank">
-                <span class="fa fa-stack-overflow fa-2x"></span>
-            </a>
-        </div>
-        <div class="icon" *ngIf="profile.github_url">
-            <a href="{{ profile.github_url }}" target="_blank">
-                <span class="fa fa-github fa-2x"></span>
-            </a>
+
+        <div class="spacing"></div>
+
+        <div class="icons">
+            <div class="icon" *ngIf="profile.facebook_url">
+                <a href="{{ profile.facebook_url }}" target="_blank">
+                    <span class="fa fa-facebook fa-2x"></span>
+                </a>
+            </div>
+            <div class="icon" *ngIf="profile.linkedin_url">
+                <a href="{{ profile.linkedin_url }}" target="_blank">
+                    <span class="fa fa-linkedin fa-2x"></span>
+                </a>
+            </div>
+            <div class="icon" *ngIf="profile.stackoverflow_url">
+                <a href="{{ profile.stackoverflow_url }}" target="_blank">
+                    <span class="fa fa-stack-overflow fa-2x"></span>
+                </a>
+            </div>
+            <div class="icon" *ngIf="profile.github_url">
+                <a href="{{ profile.github_url }}" target="_blank">
+                    <span class="fa fa-github fa-2x"></span>
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -11,7 +11,7 @@
         </script>
 
         <meta charset="utf-8">
-        <base href="./">
+        <base href="/">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
@@ -19,6 +19,32 @@
         <title>Edwin</title>
     </head>
     <body>
-        <app-root>Loading</app-root>
+        <app-root>
+            <style>
+                app-root {
+                    display: flex;
+                    align-items: center;
+                    height: 100vh;
+                    background: #16222A;
+                    font-family: Verdana;
+                    color: white;
+                    background: -webkit-linear-gradient(to top, #3A6073, #16222A);
+                    background: linear-gradient(to top, #3A6073, #16222A);
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                }
+                .container {
+                    width: 100%;
+                    text-align: center
+                }
+            </style>
+
+            <div class="container">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Portfolio logo">
+                </div>
+                Loading, please wait...
+            </div>
+        </app-root>
     </body>
 </html>

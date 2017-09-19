@@ -1,8 +1,15 @@
+<div *ngIf="!moduleIsReady">
+    <div class="loading">
+        <span class="fa fa-spinner fa-spin"></span>
+    </div>
+</div>
+
 <div *ngIf="moduleIsReady" class="project-detail" [@fadeInAnimation]>
     <div *ngIf="project">
         <div class="side-bar">
-            <div *ngIf="project.primary_image" class="image">
-                <img src="{{ project.primary_image }}" alt="Project Image">
+            <div *ngIf="project.primary_image.image" class="image">
+                <img src="{{ project.primary_image.image }}" alt="Project Image">
+                <div class="spacing"></div>
             </div>
 
             <div *ngIf="project.url">
@@ -10,6 +17,7 @@
                     To the website
                     <span class="fa fa-arrow-right pull-right icon"></span>
                 </a>
+                <div class="spacing"></div>
             </div>
 
             <div class="tags">
@@ -17,9 +25,13 @@
                    (click)="changeRoute('skills', skill.id, skill.slug)">
                     {{ skill.title }}
                 </a>
+                <div class="spacing"></div>
             </div>
 
+            <div class="spacing"></div>
             <vote-component-container [model]="'project'" [objectId]="project.id"></vote-component-container>
+
+            <div class="spacing"></div>
 
             <div class="article-data">
                 <div>Published on {{ project.datetime_added | date:'longDate' }}</div>

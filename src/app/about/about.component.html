@@ -72,17 +72,17 @@
                                 <img src="{{ work.primary_image.image }}" alt="image">
                             </span>
 
-                            <span class="short-description" [innerHTML]="work.short_description"></span>
+                            <span class="short-description" [innerHTML]="work.description"></span>
                             <div class="expand-button-container">
                                 <a class="expand-button"
-                                   *ngIf="work.long_description && readMoreWorkId != work.id"
+                                   *ngIf="work.content && readMoreWorkId != work.id"
                                    (click)="readMoreWorkId = work.id">
                                     <span class="fa fa-ellipsis-h"></span> Read more
                                 </a>
                             </div>
 
-                            <div class="long-description" *ngIf="work.long_description && readMoreWorkId == work.id">
-                                <span [innerHTML]="work.short_description"></span>
+                            <div class="long-description" *ngIf="work.content && readMoreWorkId == work.id">
+                                <span [innerHTML]="work.content"></span>
                                 <div class="expand-button-container">
                                     <a class="expand-button" (click)="readMoreWorkId = null">
                                         <span class="fa fa-ellipsis-h"></span> Read less

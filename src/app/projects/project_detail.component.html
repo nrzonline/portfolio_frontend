@@ -21,8 +21,8 @@
             </div>
 
             <div class="tags">
-                <a class="tag" *ngFor="let skill of project.skills"
-                   (click)="changeRoute('skills', skill.id, skill.slug)">
+                <a [routerLink]="['/skills', skill.id, skill.slug]" class="tag"
+                   *ngFor="let skill of project.skills">
                     {{ skill.title }}
                 </a>
                 <div class="spacing"></div>
@@ -49,8 +49,8 @@
                 <div class="text">{{ project.datetime_added | date:'longDate' }}</div>
             </div>
 
-            <div class="short-description" [innerHTML]="project.short_description"></div>
-            <div class="full-description" [innerHTML]="project.full_description"></div>
+            <div class="short-description" [innerHTML]="project.description"></div>
+            <div class="full-description" [innerHTML]="project.content"></div>
         </div>
     </div>
 </div>

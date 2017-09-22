@@ -16,7 +16,7 @@
             <div class="spacing"></div>
 
             <div class="article-data">
-                <div>Published on {{ skill.datetime_added | date:'longDate' }}</div>
+                <div>Published on {{ skill.datetime_created | date:'longDate' }}</div>
                 <div *ngIf="skill.datetime_modified">
                     Updated on {{ skill.datetime_modified | date:'longDate' }}
                 </div>
@@ -31,8 +31,8 @@
                 <div class="text">{{ skill.category.title }}</div>
             </div>
 
-            <div class="short-description" [innerHTML]="skill.short_description"></div>
-            <div class="full-description" [innerHTML]="skill.full_description"></div>
+            <div class="short-description" [innerHTML]="skill.description"></div>
+            <div class="full-description" [innerHTML]="skill.content"></div>
         </div>
     </div>
 </div>

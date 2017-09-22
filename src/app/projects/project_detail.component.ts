@@ -66,8 +66,4 @@ export class ProjectDetailComponent implements OnInit {
         this.voteComponentRef = this.viewContainerRef.createComponent(voteComponentFactory);
         this.voteComponentRef.changeDetectorRef.detectChanges();
     }
-
-    public changeRoute(route: string, id:number, slug:string){
-        this.router.navigate([route, id, slug]);
-    }
 }

@@ -286,10 +286,7 @@ footer
   background: white
   cursor: pointer
   transition: .1s all
-  &:hover,
-  &:active,
-  &:visited,
-  &:focus
+  &:hover
     color: white!important
     text-decoration: none
     background: lighten(#19272f, 15)
@@ -462,38 +459,3 @@ blockquote
   .nav
     width: 170px
     margin: 0 auto
-
-// BACKGROUND ################################################
-
-.background-row
-  display: none
-  position: fixed
-  top: 1100px
-  width: 4000px
-  opacity: .02
-  z-index: 0
-
-  @media screen and (max-width: $screen-small)
-    display: none
-
-#bg-first-row
-  height: 315px
-  transform: rotate(45deg)
-#bg-second-row
-  height: 315px
-  transform: rotate(-45deg)
-#bg-third-row,
-#bg-fifth-row
-  height: 145px
-  transform: rotate(-45deg)
-#bg-fourth-row,
-#bg-sixth-row
-  height: 145px
-  transform: rotate(45deg)
-
-// GRADIENTS #################################################
-
-.white-gradient
-  background: #FFFFFF
-  background: -webkit-linear-gradient(to left, #FFFFFF, #93baf9)
-  background: linear-gradient(to left, #FFFFFF, #93baf9)

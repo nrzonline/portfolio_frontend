@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Http, HttpModule, BaseRequestOptions } from '@angular/http';
 import { RestangularModule } from 'ng2-restangular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -33,6 +34,7 @@ export function RestangularConfigFactory(Restangular){
 @NgModule({
    imports: [
        BrowserModule,
+       BrowserAnimationsModule,
        routing,
        HttpModule,
        FormsModule,

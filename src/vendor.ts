@@ -13,9 +13,7 @@ import '@ngx-translate/core';
 import 'rxjs';
 
 // CSS
-import '../node_modules/bootflat/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/material-design-icons/iconfont/material-icons.css';
 
 // JS
 import '../node_modules/jquery/dist/jquery.min.js';

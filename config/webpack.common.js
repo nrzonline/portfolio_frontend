@@ -12,7 +12,8 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.ts', '.js']
+        modules: ['node_modules', 'src'],
+        extensions: ['.ts', '.js', 'sass', 'css']
     },
 
     module: {
@@ -37,13 +38,13 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: helpers.root('src', 'app'),
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
             },
-            {
-                test: /\.css$/,
-                include: helpers.root('src', 'app'),
-                loader: 'raw-loader'
-            },
+            // {
+            //     test: /\.css$/,
+            //     include: helpers.root('src', 'app'),
+            //     loader: 'raw-loader'
+            // },
             {
                 test: /\.sass$/,
                 exclude: /node_modules/,
@@ -55,12 +56,11 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('[name].css'),
 
-        // Workaround for angular/angular#11580
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-            helpers.root('./src'), // location of your src
-            {} // a map of your routes
+            /angular(\\|\/)core/,
+            helpers.root('src'), // location of your src
+            { }
         ),
 
         new webpack.optimize.CommonsChunkPlugin({
